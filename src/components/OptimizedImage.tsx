@@ -34,14 +34,12 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   loading = 'lazy',
   fetchPriority = 'auto',
   className = '',
-  fallbackSrc = '/images/fallback-industrie.webp',
+  fallbackSrc = '/images/fallback-industrie.jpg',
   onError,
   ...rest
 }) => {
   const resolvedSrc = resolveAssetUrl(src) || src;
-  const resolvedWebp = resolveAssetUrl(
-    webpSrc || (src.endsWith('.jpg') ? src.replace(/\.jpg$/, '.webp') : undefined)
-  );
+  const resolvedWebp = webpSrc ? resolveAssetUrl(webpSrc) : undefined;
   const resolvedFallback = resolveAssetUrl(fallbackSrc) || fallbackSrc;
 
   const [imgSrc, setImgSrc] = useState<string>(resolvedSrc);

@@ -45,8 +45,7 @@ export const CourseModal: React.FC<Props> = ({ course, onClose, onRequestCourse 
               <div className="relative h-48 sm:h-60 w-full rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900">
                 <OptimizedImage
                   src={course.image}
-                  webpSrc={course.imageWebp || course.image}
-                  fallbackSrc={course.imageJpg}
+                  fallbackSrc={course.imageJpg || course.image}
                   alt={course.imageAlt || course.title}
                   width={800}
                   height={450}

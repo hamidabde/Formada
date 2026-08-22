@@ -133,9 +133,8 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
                 {/* Course Card Top Image Header */}
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                   <OptimizedImage
-                    src={course.image || '/images/industrial-automation.webp'}
-                    webpSrc={course.imageWebp || course.image}
-                    fallbackSrc={course.imageJpg}
+                    src={course.image || '/images/industrial-automation.jpg'}
+                    fallbackSrc={course.imageJpg || '/images/industrial-automation.jpg'}
                     alt={course.imageAlt || course.title}
                     width={800}
                     height={450}

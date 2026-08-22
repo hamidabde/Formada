@@ -4,10 +4,10 @@ import { TechService } from '../types';
 import { Wrench, Cpu, Bot, Settings, CheckCircle2, ArrowRight, ShieldCheck, Zap, PhoneCall } from 'lucide-react';
 import { OptimizedImage } from '../components/OptimizedImage';
 
-const imgBanc = '/images/formation-pratique-banc.webp';
-const imgDiagnostic = '/images/automated-system-diagnostics.webp';
-const imgHero = '/images/hero-automatisme-industrie.webp';
-const imgReparation = '/images/reparation-carte-electronique.webp';
+const imgBanc = '/images/formation-pratique-banc.jpg';
+const imgDiagnostic = '/images/automated-system-diagnostics.jpg';
+const imgHero = '/images/hero-automatisme-industrie.jpg';
+const imgReparation = '/images/reparation-carte-electronique.jpg';
 
 interface Props {
   onRequestService: (serviceTitle: string) => void;
