@@ -7,9 +7,10 @@ import { INDUSTRIAL_TECHNOLOGIES } from '../data/technologies';
 import { ArrowRight, CheckCircle2, GraduationCap, Wrench, ShieldCheck, Zap, Cpu, Settings, Award, Users, Activity, FileText, Bot, Layers, Gauge, Network } from 'lucide-react';
 import { Um6pLogo, OcpLogo, AzuraLogo, DislogLogo, LicorneLogo } from '../components/PartnerLogos';
 import { OptimizedImage } from '../components/OptimizedImage';
-import heroImg from '../assets/images/hero-automatisme-industrie.webp';
-import bancImg from '../assets/images/formation-pratique-banc.webp';
-import reparImg from '../assets/images/reparation-carte-electronique.webp';
+
+const heroImg = '/images/hero-automatisme-industrie.webp';
+const bancImg = '/images/formation-pratique-banc.webp';
+const reparImg = '/images/reparation-carte-electronique.webp';
 
 interface Props {
   companyInfo: CompanyInfo;
