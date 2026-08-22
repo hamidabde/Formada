@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Course } from '../types';
 import { COURSES_DATA } from '../data/courses';
 import { Search, Clock, BookOpen, ArrowRight, Layers, SlidersHorizontal, Award } from 'lucide-react';
-import { handleImageError } from '../utils/imageUtils';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface Props {
   onSelectCourse: (course: Course) => void;
@@ -132,14 +132,15 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
               <div>
                 {/* Course Card Top Image Header */}
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
-                  <img
+                  <OptimizedImage
                     src={course.image}
+                    webpSrc={course.imageWebp || course.image}
+                    fallbackSrc={course.imageJpg}
                     alt={course.imageAlt || course.title}
                     width={800}
                     height={450}
-                    loading={index < 3 ? undefined : 'lazy'}
-                    decoding="async"
-                    onError={(e) => handleImageError(e)}
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                    fetchPriority={index < 3 ? 'high' : 'auto'}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/25 to-transparent pointer-events-none" />

@@ -6,10 +6,10 @@ import { TECHNICAL_SERVICES } from '../data/services';
 import { INDUSTRIAL_TECHNOLOGIES } from '../data/technologies';
 import { ArrowRight, CheckCircle2, GraduationCap, Wrench, ShieldCheck, Zap, Cpu, Settings, Award, Users, Activity, FileText, Bot, Layers, Gauge, Network } from 'lucide-react';
 import { Um6pLogo, OcpLogo, AzuraLogo, DislogLogo, LicorneLogo } from '../components/PartnerLogos';
-import { handleImageError } from '../utils/imageUtils';
-import heroImg from '../assets/images/hero_automation_1787429499036.jpg';
-import bancImg from '../assets/images/training_bench_1787429510879.jpg';
-import reparImg from '../assets/images/electronic_repair_1787429521491.jpg';
+import { OptimizedImage } from '../components/OptimizedImage';
+import heroImg from '../assets/images/hero-automatisme-industrie.webp';
+import bancImg from '../assets/images/formation-pratique-banc.webp';
+import reparImg from '../assets/images/reparation-carte-electronique.webp';
 
 interface Props {
   companyInfo: CompanyInfo;
@@ -87,13 +87,15 @@ export const HomeView: React.FC<Props> = ({
             {/* Right Column Image & Interactive Graphic */}
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-slate-900">
-                <img
+                <OptimizedImage
                   src={heroImg}
-                  alt="Armoire d'automatisme industriel et variateurs de vitesse pour le contrôle d'équipements de production"
+                  webpSrc={heroImg}
+                  fallbackSrc="/images/hero-automatisme-industrie.jpg"
+                  alt="Armoire d'automatisme industriel et variateurs de vitesse pour le contrôle d'équipements de production au Maroc"
                   width={1200}
                   height={675}
-                  decoding="async"
-                  onError={(e) => handleImageError(e)}
+                  loading="eager"
+                  fetchPriority="high"
                   className="w-full h-80 sm:h-96 object-cover transform group-hover:scale-103 transition-transform duration-700 opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a365d] via-[#1a365d]/40 to-transparent pointer-events-none" />
@@ -134,14 +136,14 @@ export const HomeView: React.FC<Props> = ({
           {/* Bloc 1 — Formations industrielles */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-orange-300 transition-all flex flex-col justify-between group overflow-hidden">
             <div className="relative h-48 sm:h-56 overflow-hidden bg-slate-900">
-              <img
+              <OptimizedImage
                 src={bancImg}
-                alt="Formation pratique en automatisme industriel sur banc et automate programmable"
+                webpSrc={bancImg}
+                fallbackSrc="/images/formation-pratique-banc.jpg"
+                alt="Formation pratique en automatisme industriel sur banc d'essai et automate programmable PLC au Maroc"
                 loading="lazy"
                 width={800}
                 height={450}
-                decoding="async"
-                onError={(e) => handleImageError(e)}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a365d]/90 via-[#1a365d]/30 to-transparent pointer-events-none" />
@@ -194,14 +196,14 @@ export const HomeView: React.FC<Props> = ({
           {/* Bloc 2 — Services techniques */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-[#1a365d] transition-all flex flex-col justify-between group overflow-hidden">
             <div className="relative h-48 sm:h-56 overflow-hidden bg-slate-900">
-              <img
+              <OptimizedImage
                 src={reparImg}
-                alt="Diagnostic et réparation d'une carte électronique industrielle et maintenance"
+                webpSrc={reparImg}
+                fallbackSrc="/images/reparation-carte-electronique.jpg"
+                alt="Diagnostic au banc et réparation de carte électronique industrielle et maintenance multi-marques au Maroc"
                 loading="lazy"
                 width={800}
                 height={450}
-                decoding="async"
-                onError={(e) => handleImageError(e)}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a365d]/90 via-[#1a365d]/30 to-transparent pointer-events-none" />

@@ -2,11 +2,11 @@ import React from 'react';
 import { TECHNICAL_SERVICES } from '../data/services';
 import { TechService } from '../types';
 import { Wrench, Cpu, Bot, Settings, CheckCircle2, ArrowRight, ShieldCheck, Zap, PhoneCall } from 'lucide-react';
-import { handleImageError } from '../utils/imageUtils';
-import imgBanc from '../assets/images/training_bench_1787429510879.jpg';
-import imgDiagnostic from '../assets/images/industrial_plc_1787429532594.jpg';
-import imgHero from '../assets/images/hero_automation_1787429499036.jpg';
-import imgReparation from '../assets/images/electronic_repair_1787429521491.jpg';
+import { OptimizedImage } from '../components/OptimizedImage';
+import imgBanc from '../assets/images/formation-pratique-banc.webp';
+import imgDiagnostic from '../assets/images/automated-system-diagnostics.webp';
+import imgHero from '../assets/images/hero-automatisme-industrie.webp';
+import imgReparation from '../assets/images/reparation-carte-electronique.webp';
 
 interface Props {
   onRequestService: (serviceTitle: string) => void;
@@ -29,15 +29,15 @@ function getServiceImage(serviceId: string): string {
 function getServiceImageAlt(service: TechService): string {
   switch (service.id) {
     case 'reparation':
-      return "Diagnostic et réparation d'une carte électronique industrielle au composant";
+      return "Diagnostic avancé au banc et réparation de cartes électroniques industrielles au composant au Maroc";
     case 'automatisme':
-      return "Programmation et configuration d'un automate industriel pour équipement de production";
+      return "Programmation, configuration et mise en service d'automates programmables industriels PLC Siemens et Schneider au Maroc";
     case 'diagnostic':
-      return "Technicien effectuant un diagnostic technique et dépannage sur un équipement industriel";
+      return "Diagnostic méthodique de pannes, dépannage d'urgence et remise en service de lignes automatisées au Maroc";
     case 'installation':
-      return "Installation, câblage et mise en service d'armoires d'automatisme et de puissance";
+      return "Installation d'armoires électriques, variateurs de vitesse et intégration de systèmes automatisés au Maroc";
     default:
-      return "Prestation technique et maintenance d'équipements industriels";
+      return "Prestation de maintenance industrielle et ingénierie d'automatisme au Maroc";
   }
 }
 
@@ -70,14 +70,14 @@ export const ServicesView: React.FC<Props> = ({ onRequestService }) => {
             >
               {/* Service Header Banner with WebP Image */}
               <div className="relative h-48 sm:h-60 w-full overflow-hidden bg-slate-900">
-                <img
+                <OptimizedImage
                   src={serviceImg}
+                  webpSrc={serviceImg}
                   alt={getServiceImageAlt(service)}
-                  loading={index === 0 ? undefined : 'lazy'}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
                   width={800}
                   height={450}
-                  decoding="async"
-                  onError={(e) => handleImageError(e)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a365d] via-[#1a365d]/40 to-transparent pointer-events-none" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Course } from '../types';
 import { X, Clock, Award, ShieldAlert, Cpu, CheckCircle, ArrowRight, UserCheck, Layers, FileText, Sliders } from 'lucide-react';
-import { handleImageError } from '../utils/imageUtils';
+import { OptimizedImage } from './OptimizedImage';
 
 interface Props {
   course: Course | null;
@@ -42,14 +42,15 @@ export const CourseModal: React.FC<Props> = ({ course, onClose, onRequestCourse 
           {/* Course Banner Image */}
           {course.image && (
             <div className="relative h-48 sm:h-56 w-full rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900">
-              <img
+              <OptimizedImage
                 src={course.image}
+                webpSrc={course.imageWebp || course.image}
+                fallbackSrc={course.imageJpg}
                 alt={course.imageAlt || course.title}
                 width={800}
                 height={450}
                 loading="eager"
-                decoding="async"
-                onError={(e) => handleImageError(e)}
+                fetchPriority="high"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />

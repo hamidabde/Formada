@@ -1,17 +1,17 @@
 import { Course } from '../types';
-import imgAutomatisme from '../assets/images/industrial_plc_1787429532594.jpg';
-import imgHmi from '../assets/images/hmi_screen_1787429652330.jpg';
-import imgScada from '../assets/images/scada_screen_1787429571926.jpg';
-import imgReseaux from '../assets/images/ind_networks_1787429638350.jpg';
-import imgDiagnostic from '../assets/images/training_bench_1787429510879.jpg';
-import imgVariateurs from '../assets/images/vfd_drives_1787429546965.jpg';
-import imgPhotovoltaique from '../assets/images/solar_industrial_1787429558866.jpg';
-import imgElectricite from '../assets/images/electrical_cabinet_1787429583879.jpg';
-import imgEnergie from '../assets/images/energy_audit_1787429626361.jpg';
-import imgMaintenance from '../assets/images/ind_maintenance_1787429603700.jpg';
-import imgElectronique from '../assets/images/ind_electronics_1787429665074.jpg';
-import imgHabilitation from '../assets/images/elec_safety_1787429613595.jpg';
-import imgQhse from '../assets/images/qhse_safety_1787429675742.jpg';
+import imgAutomatisme from '../assets/images/industrial-automation.webp';
+import imgHmi from '../assets/images/hmi-training.webp';
+import imgScada from '../assets/images/scada-training.webp';
+import imgReseaux from '../assets/images/industrial-networks.webp';
+import imgDiagnostic from '../assets/images/automated-system-diagnostics.webp';
+import imgVariateurs from '../assets/images/variable-speed-drives.webp';
+import imgPhotovoltaique from '../assets/images/photovoltaic-systems.webp';
+import imgElectricite from '../assets/images/industrial-electricity.webp';
+import imgEnergie from '../assets/images/energy-efficiency-iso50001.webp';
+import imgMaintenance from '../assets/images/industrial-maintenance.webp';
+import imgElectronique from '../assets/images/industrial-electronics.webp';
+import imgHabilitation from '../assets/images/electrical-safety.webp';
+import imgQhse from '../assets/images/qhse.webp';
 
 export const COURSES_DATA: Course[] = [
   // 1 — Formation Automatisme Industriel & Automates Programmables
@@ -23,8 +23,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation pratique couvrant les fondamentaux de l’automatisme industriel, la programmation des automates PLC/API, le Grafcet, les capteurs, les actionneurs, le diagnostic et les applications industrielles.',
     image: imgAutomatisme,
     imageWebp: imgAutomatisme,
-    imageJpg: imgAutomatisme,
-    imageAlt: "Formation pratique en automatisme industriel et programmation d'automates PLC Siemens et Schneider",
+    imageJpg: '/images/industrial-automation.jpg',
+    imageAlt: "Formation pratique en automatisme industriel et programmation d'automates PLC Siemens TIA Portal et Schneider au Maroc",
     seoFileName: 'industrial-automation.webp',
     objectives: [
       'Comprendre l’architecture matérielle et logicielle des automates programmables industriels (API / PLC).',
@@ -81,8 +81,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Conception, configuration et programmation d’interfaces opérateur permettant la visualisation, la commande, le diagnostic et le suivi des équipements automatisés.',
     image: imgHmi,
     imageWebp: imgHmi,
-    imageJpg: imgHmi,
-    imageAlt: "Formation en développement et programmation d'interfaces homme-machine tactiles IHM HMI",
+    imageJpg: '/images/hmi-training.jpg',
+    imageAlt: "Formation en développement et programmation d'interfaces homme-machine tactiles IHM HMI Siemens et Schneider au Maroc",
     seoFileName: 'hmi-training.webp',
     objectives: [
       'Concevoir des interfaces tactiles ergonomiques et intuitives pour pupitres opérateurs industriels.',
@@ -138,8 +138,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation à la conception, au déploiement et à l’exploitation de systèmes SCADA pour la supervision, l’acquisition des données, les alarmes, les tendances et le pilotage des installations industrielles.',
     image: imgScada,
     imageWebp: imgScada,
-    imageJpg: imgScada,
-    imageAlt: "Formation en supervision industrielle SCADA, synoptiques temps réel et acquisition de données",
+    imageJpg: '/images/scada-training.jpg',
+    imageAlt: "Formation en supervision industrielle SCADA, synoptiques temps réel, télémétrie et acquisition de données usine au Maroc",
     seoFileName: 'scada-training.webp',
     objectives: [
       'Maîtriser l’architecture client/serveur des systèmes de supervision SCADA industriels.',
@@ -195,8 +195,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation consacrée à la configuration, au diagnostic et à la maintenance des réseaux de communication utilisés pour connecter automates, variateurs, IHM et équipements industriels.',
     image: imgReseaux,
     imageWebp: imgReseaux,
-    imageJpg: imgReseaux,
-    imageAlt: "Formation aux réseaux et bus de terrain industriels PROFINET, Ethernet/IP et Modbus TCP",
+    imageJpg: '/images/industrial-networks.jpg',
+    imageAlt: "Formation aux réseaux et bus de terrain industriels PROFINET, Ethernet/IP et Modbus TCP au Maroc",
     seoFileName: 'industrial-networks.webp',
     objectives: [
       'Comprendre le fonctionnement et les spécificités des protocoles Ethernet industriels temps réel.',
@@ -252,8 +252,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Méthodologie pratique pour analyser rapidement les dysfonctionnements des automatismes, identifier l’origine des pannes et réduire les temps d’arrêt des équipements de production.',
     image: imgDiagnostic,
     imageWebp: imgDiagnostic,
-    imageJpg: imgDiagnostic,
-    imageAlt: "Formation au diagnostic, dépannage et recherche de pannes sur systèmes automatisés de production",
+    imageJpg: '/images/automated-system-diagnostics.jpg',
+    imageAlt: "Formation au diagnostic, dépannage et recherche méthodique de pannes sur systèmes automatisés de production",
     seoFileName: 'automated-system-diagnostics.webp',
     objectives: [
       'Appliquer une méthodologie rigoureuse et structurée de recherche de pannes industrielles.',
@@ -309,8 +309,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation pratique consacrée au fonctionnement, au paramétrage, à la mise en service, au diagnostic et à la maintenance des variateurs de vitesse industriels.',
     image: imgVariateurs,
     imageWebp: imgVariateurs,
-    imageJpg: imgVariateurs,
-    imageAlt: "Formation au paramétrage, contrôle moteur et maintenance des variateurs de vitesse industriels",
+    imageJpg: '/images/variable-speed-drives.jpg',
+    imageAlt: "Formation pratique au paramétrage, contrôle moteur et dépannage des variateurs de vitesse Siemens Sinamics et Schneider Altivar au Maroc",
     seoFileName: 'variable-speed-drives.webp',
     objectives: [
       'Comprendre les principes physiques de la variation de fréquence sur moteurs asynchrones et synchrones.',
@@ -367,8 +367,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation couvrant l’étude, le dimensionnement, l’installation, le câblage, la mise en service et les principes de maintenance des installations photovoltaïques.',
     image: imgPhotovoltaique,
     imageWebp: imgPhotovoltaique,
-    imageJpg: imgPhotovoltaique,
-    imageAlt: "Formation à l'étude, au dimensionnement et à l'installation de centrales solaires photovoltaïques",
+    imageJpg: '/images/photovoltaic-systems.jpg',
+    imageAlt: "Formation à l'étude, au dimensionnement et à l'installation de centrales solaires photovoltaïques industrielles au Maroc",
     seoFileName: 'photovoltaic-systems.webp',
     objectives: [
       'Comprendre le principe de conversion photovoltaïque et les technologies de modules solaires.',
@@ -424,8 +424,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation pratique sur les installations électriques basse tension, les schémas électriques, les protections, les moteurs, le câblage, les mesures et le diagnostic des circuits industriels.',
     image: imgElectricite,
     imageWebp: imgElectricite,
-    imageJpg: imgElectricite,
-    imageAlt: "Formation en électricité industrielle basse tension, armoires électriques et normes de câblage",
+    imageJpg: '/images/industrial-electricity.jpg',
+    imageAlt: "Formation pratique en électricité industrielle basse tension, armoires électriques et normes de câblage NF C 15-100",
     seoFileName: 'industrial-electricity.webp',
     objectives: [
       'Lire et interpréter couramment des schémas électriques industriels complexes (normes CEI / NF C 15-100).',
@@ -481,8 +481,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation permettant de comprendre les principes du management de l’énergie, d’identifier les usages énergétiques significatifs, de définir des indicateurs de performance énergétique et d’appliquer les principes de l’ISO 50001.',
     image: imgEnergie,
     imageWebp: imgEnergie,
-    imageJpg: imgEnergie,
-    imageAlt: "Formation en efficacité énergétique industrielle, audit et mise en œuvre du management ISO 50001",
+    imageJpg: '/images/energy-efficiency-iso50001.jpg',
+    imageAlt: "Formation en efficacité énergétique industrielle, audit thermique et management ISO 50001 au Maroc",
     seoFileName: 'energy-efficiency-iso50001.webp',
     objectives: [
       'Comprendre les exigences et la méthodologie du système de management de l’énergie selon la norme ISO 50001.',
@@ -538,8 +538,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation destinée au développement des compétences en maintenance préventive, corrective et diagnostique des machines et équipements industriels.',
     image: imgMaintenance,
     imageWebp: imgMaintenance,
-    imageJpg: imgMaintenance,
-    imageAlt: "Formation pratique en maintenance industrielle préventive, corrective et GMAO",
+    imageJpg: '/images/industrial-maintenance.jpg',
+    imageAlt: "Formation pratique en maintenance industrielle préventive, corrective, alignement laser et GMAO au Maroc",
     seoFileName: 'industrial-maintenance.webp',
     objectives: [
       'Maîtriser les différentes stratégies de maintenance : préventive systématique, conditionnelle, prédictive et corrective.',
@@ -595,8 +595,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation pratique sur les méthodes de contrôle, de mesure, de diagnostic et d’identification des défauts des cartes électroniques utilisées dans les équipements industriels.',
     image: imgElectronique,
     imageWebp: imgElectronique,
-    imageJpg: imgElectronique,
-    imageAlt: "Formation au diagnostic, contrôle et réparation des cartes électroniques industrielles",
+    imageJpg: '/images/industrial-electronics.jpg',
+    imageAlt: "Formation pratique au diagnostic, contrôle à l'oscilloscope et réparation de cartes électroniques industrielles au Maroc",
     seoFileName: 'industrial-electronics.webp',
     objectives: [
       'Identifier la fonction et le principe des composants électroniques discrets et CMS (diodes, transistors, MOSFET, IGBT, optocoupleurs).',
@@ -652,8 +652,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation consacrée aux règles de sécurité, aux risques électriques, aux procédures d’intervention, de consignation et aux bonnes pratiques relatives aux opérations sur ou à proximité des installations électriques.',
     image: imgHabilitation,
     imageWebp: imgHabilitation,
-    imageJpg: imgHabilitation,
-    imageAlt: "Formation et certification en habilitation électrique basse et haute tension selon la norme NF C 18-510",
+    imageJpg: '/images/electrical-safety.jpg',
+    imageAlt: "Formation et certification en habilitation électrique B1V B2V BR BC basse et haute tension selon la norme NF C 18-510 au Maroc",
     seoFileName: 'electrical-safety.webp',
     objectives: [
       'Identifier les dangers du courant électrique, les effets physiologiques de l’électrisation et les risques d’arc flash.',
@@ -711,8 +711,8 @@ export const COURSES_DATA: Course[] = [
     shortDescription: 'Formation sur les fondamentaux de la qualité, de la santé et sécurité au travail, de la prévention des risques et de la maîtrise des impacts environnementaux en milieu professionnel.',
     image: imgQhse,
     imageWebp: imgQhse,
-    imageJpg: imgQhse,
-    imageAlt: "Formation en management QHSE, prévention des risques et sécurité industrielle au travail",
+    imageJpg: '/images/qhse.jpg',
+    imageAlt: "Formation professionnelle en management QHSE, prévention des risques et sécurité industrielle au travail au Maroc",
     seoFileName: 'qhse.webp',
     objectives: [
       'Comprendre les enjeux transversaux d’un système intégré Qualité, Hygiène, Sécurité et Environnement (QHSE).',
