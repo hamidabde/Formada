@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="CxhNY1PUi1oOPN99_XkWIKXjnMgdc4ywzktW87dPb6o" />
+    <meta name="google-site-verification" content="google4c073c083c514e57" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <title>INDUSTRIELTECH | Automatisme, Maintenance &amp; Formation au Maroc</title>
+    <meta name="description" content="INDUSTRIELTECH propose des formations et services en automatisme industriel, maintenance, variateurs de vitesse, électricité et énergie au Maroc." />
+    <script>
+      // Single Page Apps for GitHub Pages or static web hosts path restoration
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script>
+      (function() {
+        try {
+          var _fetch = window.fetch;
+          var getter = function() { return _fetch; };
+          var setter = function(v) { _fetch = v; };
+
+          var targets = [window];
+          if (typeof window.Window === 'function' && window.Window.prototype) {
+            targets.push(window.Window.prototype);
+          }
+
+          targets.forEach(function(target) {
+            try {
+              var desc = Object.getOwnPropertyDescriptor(target, 'fetch');
+              if (!desc || desc.configurable !== false) {
+                Object.defineProperty(target, 'fetch', {
+                  get: getter,
+                  set: setter,
+                  configurable: true,
+                  enumerable: true
+                });
+              }
+            } catch (e) {}
+          });
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
