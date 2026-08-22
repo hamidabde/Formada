@@ -84,7 +84,7 @@ export const HomeView: React.FC<Props> = ({
               </div>
             </div>
 
-            {/* Right Column Image & Interactive Graphic */}
+            {/* Right Column Technical Metrics & Control Console */}
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-slate-900">
                 <OptimizedImage

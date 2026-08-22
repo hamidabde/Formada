@@ -22,10 +22,10 @@ export interface Course {
   category: string;
   categoryLabel: string;
   shortDescription: string;
-  image: string;
+  image?: string;
   imageWebp?: string;
   imageJpg?: string;
-  imageAlt: string;
+  imageAlt?: string;
   seoFileName?: string;
   objectives: string[];
   program: {
