@@ -90,6 +90,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
         loading={loading}
         fetchPriority={fetchPriority}
         decoding="async"
+        referrerPolicy="no-referrer"
         onError={handleError}
         className={`w-full h-full object-cover ${className}`}
         {...rest}

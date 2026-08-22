@@ -8,7 +8,7 @@ import { ArrowRight, CheckCircle2, GraduationCap, Wrench, ShieldCheck, Zap, Cpu,
 import { Um6pLogo, OcpLogo, AzuraLogo, DislogLogo, LicorneLogo } from '../components/PartnerLogos';
 import { OptimizedImage } from '../components/OptimizedImage';
 
-const heroImg = '/images/hero-automatisme-industrie.jpg';
+const heroImg = 'https://i.postimg.cc/Hj1s81V0/formation-pratique-banc.webp';
 const bancImg = '/images/formation-pratique-banc.jpg';
 const reparImg = '/images/reparation-carte-electronique.jpg';
 
