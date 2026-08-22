@@ -39,26 +39,39 @@ export const CourseModal: React.FC<Props> = ({ course, onClose, onRequestCourse 
 
         {/* Body scrollable content */}
         <div className="p-6 overflow-y-auto space-y-6 text-slate-800 text-sm">
-          {/* Course Banner Image */}
+          {/* Course Banner Image & Practical Explanation */}
           {course.image && (
-            <div className="relative h-48 sm:h-56 w-full rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900">
-              <OptimizedImage
-                src={course.image}
-                webpSrc={course.imageWebp || course.image}
-                fallbackSrc={course.imageJpg}
-                alt={course.imageAlt || course.title}
-                width={800}
-                height={450}
-                loading="eager"
-                fetchPriority="high"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-4 right-4 pointer-events-none">
-                <span className="text-xs text-slate-200 font-medium line-clamp-1">
-                  {course.imageAlt}
-                </span>
+            <div className="space-y-2">
+              <div className="relative h-48 sm:h-60 w-full rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900">
+                <OptimizedImage
+                  src={course.image}
+                  webpSrc={course.imageWebp || course.image}
+                  fallbackSrc={course.imageJpg}
+                  alt={course.imageAlt || course.title}
+                  width={800}
+                  height={450}
+                  loading="eager"
+                  fetchPriority="high"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent pointer-events-none" />
+                <div className="absolute top-3 left-3 pointer-events-none">
+                  <span className="px-2.5 py-1 bg-orange-500 text-white rounded-md text-[10.5px] font-bold uppercase tracking-wider shadow-sm">
+                    Matériel &amp; Bancs Pratiques
+                  </span>
+                </div>
+                <div className="absolute bottom-3 left-4 right-4 pointer-events-none">
+                  <span className="text-xs text-white font-medium drop-shadow-sm line-clamp-1">
+                    {course.imageAlt}
+                  </span>
+                </div>
               </div>
+              {course.imageCaption && (
+                <div className="p-3 bg-blue-50/70 rounded-lg border border-blue-100 flex items-start gap-2 text-xs text-slate-700">
+                  <span className="font-bold text-[#1a365d] shrink-0">Illustration pratique :</span>
+                  <span>{course.imageCaption}</span>
+                </div>
+              )}
             </div>
           )}
 

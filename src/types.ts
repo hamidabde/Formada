@@ -26,6 +26,7 @@ export interface Course {
   imageWebp?: string;
   imageJpg?: string;
   imageAlt?: string;
+  imageCaption?: string;
   seoFileName?: string;
   objectives: string[];
   program: {

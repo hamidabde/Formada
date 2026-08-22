@@ -154,6 +154,13 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
                       {course.level.includes('—') ? course.level.split('—')[0].trim() : course.level}
                     </span>
                   </div>
+
+                  {/* Practical work visual caption */}
+                  <div className="absolute bottom-2.5 left-3 right-3 pointer-events-none">
+                    <span className="text-[10.5px] text-slate-200 font-medium line-clamp-1 drop-shadow-md bg-slate-950/60 backdrop-blur-xs px-2 py-0.5 rounded">
+                      {course.imageCaption || course.imageAlt}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="p-6 space-y-3">
