@@ -2,44 +2,9 @@ import React from 'react';
 import { TECHNICAL_SERVICES } from '../data/services';
 import { TechService } from '../types';
 import { Wrench, Cpu, Bot, Settings, CheckCircle2, ArrowRight, ShieldCheck, Zap, PhoneCall } from 'lucide-react';
-import { OptimizedImage } from '../components/OptimizedImage';
-
-const imgBanc = '/images/formation-pratique-banc.jpg';
-const imgDiagnostic = '/images/automated-system-diagnostics.jpg';
-const imgHero = '/images/hero-automatisme-industrie.jpg';
-const imgReparation = '/images/reparation-carte-electronique.jpg';
 
 interface Props {
   onRequestService: (serviceTitle: string) => void;
-}
-
-function getServiceImage(serviceId: string): string {
-  switch (serviceId) {
-    case 'automatisme':
-      return imgBanc;
-    case 'diagnostic':
-      return imgDiagnostic;
-    case 'installation':
-      return imgHero;
-    case 'reparation':
-    default:
-      return imgReparation;
-  }
-}
-
-function getServiceImageAlt(service: TechService): string {
-  switch (service.id) {
-    case 'reparation':
-      return "Diagnostic avancé au banc et réparation de cartes électroniques industrielles au composant au Maroc";
-    case 'automatisme':
-      return "Programmation, configuration et mise en service d'automates programmables industriels PLC Siemens et Schneider au Maroc";
-    case 'diagnostic':
-      return "Diagnostic méthodique de pannes, dépannage d'urgence et remise en service de lignes automatisées au Maroc";
-    case 'installation':
-      return "Installation d'armoires électriques, variateurs de vitesse et intégration de systèmes automatisés au Maroc";
-    default:
-      return "Prestation de maintenance industrielle et ingénierie d'automatisme au Maroc";
-  }
 }
 
 export const ServicesView: React.FC<Props> = ({ onRequestService }) => {
@@ -61,42 +26,33 @@ export const ServicesView: React.FC<Props> = ({ onRequestService }) => {
 
       {/* Services Grid Breakdown */}
       <div className="space-y-10">
-        {TECHNICAL_SERVICES.map((service, index) => {
-          const serviceImg = getServiceImage(service.id);
-
+        {TECHNICAL_SERVICES.map((service) => {
           return (
             <div
               key={service.id}
               className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden transition-all hover:border-orange-300 group"
             >
-              {/* Service Header Banner with WebP Image */}
-              <div className="relative h-48 sm:h-60 w-full overflow-hidden bg-slate-900">
-                <OptimizedImage
-                  src={serviceImg}
-                  webpSrc={serviceImg}
-                  alt={getServiceImageAlt(service)}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchPriority={index === 0 ? 'high' : 'auto'}
-                  width={800}
-                  height={450}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a365d] via-[#1a365d]/40 to-transparent pointer-events-none" />
-                <div className="absolute top-4 left-6 pointer-events-none">
+              {/* Service Header Banner */}
+              <div className="bg-slate-900 text-white p-6 sm:p-8 space-y-4 border-b border-slate-800">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
                   <span className="px-3 py-1 bg-orange-500 text-white font-extrabold text-[11px] uppercase tracking-wider rounded-md shadow-sm">
                     Pôle Services Techniques au Maroc
                   </span>
+                  <span className="text-xs font-mono text-emerald-400 bg-slate-950/80 px-2.5 py-1 rounded-md border border-emerald-500/30">
+                    INTERVENTION SUR SITE &amp; ATELIER
+                  </span>
                 </div>
-                <div className="absolute bottom-4 left-6 right-6 text-white flex items-center gap-3 pointer-events-none">
-                  <div className="w-12 h-12 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold shrink-0 shadow-lg">
-                    {service.id === 'reparation' && <Cpu className="w-6 h-6" />}
-                    {service.id === 'automatisme' && <Bot className="w-6 h-6" />}
-                    {service.id === 'diagnostic' && <Wrench className="w-6 h-6" />}
-                    {service.id === 'installation' && <Settings className="w-6 h-6" />}
+
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-orange-500 text-white flex items-center justify-center font-bold shrink-0 shadow-lg border border-orange-400/40">
+                    {service.id === 'reparation' && <Cpu className="w-7 h-7" />}
+                    {service.id === 'automatisme' && <Bot className="w-7 h-7" />}
+                    {service.id === 'diagnostic' && <Wrench className="w-7 h-7" />}
+                    {service.id === 'installation' && <Settings className="w-7 h-7" />}
                   </div>
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold leading-snug">{service.title}</h2>
-                    <p className="text-xs text-slate-200 mt-0.5">{service.shortDescription}</p>
+                    <h2 className="text-xl sm:text-2xl font-bold leading-snug text-white">{service.title}</h2>
+                    <p className="text-xs text-slate-300 mt-1 max-w-2xl">{service.shortDescription}</p>
                   </div>
                 </div>
               </div>

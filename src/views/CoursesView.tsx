@@ -1,12 +1,39 @@
 import React, { useState } from 'react';
 import { Course } from '../types';
 import { COURSES_DATA } from '../data/courses';
-import { Search, Clock, BookOpen, ArrowRight, Layers, SlidersHorizontal, Award } from 'lucide-react';
-import { OptimizedImage } from '../components/OptimizedImage';
+import { Search, Clock, BookOpen, ArrowRight, Layers, SlidersHorizontal, Award, Cpu, Network, Zap, Sun, Wrench, ShieldAlert, Gauge, Activity } from 'lucide-react';
 
 interface Props {
   onSelectCourse: (course: Course) => void;
   onRequestCourse: (courseTitle: string) => void;
+}
+
+function getCourseCategoryIcon(category: string) {
+  switch (category) {
+    case 'automatisme':
+    case 'supervision':
+    case 'scada':
+      return <Cpu className="w-5 h-5 text-orange-400" />;
+    case 'reseaux':
+      return <Network className="w-5 h-5 text-cyan-400" />;
+    case 'diagnostic':
+      return <Activity className="w-5 h-5 text-emerald-400" />;
+    case 'variateurs':
+      return <Gauge className="w-5 h-5 text-amber-400" />;
+    case 'electricite':
+    case 'efficacite':
+      return <Zap className="w-5 h-5 text-yellow-400" />;
+    case 'solaire':
+      return <Sun className="w-5 h-5 text-orange-400" />;
+    case 'maintenance':
+    case 'electronique':
+      return <Wrench className="w-5 h-5 text-blue-400" />;
+    case 'securite':
+    case 'qhse':
+      return <ShieldAlert className="w-5 h-5 text-red-400" />;
+    default:
+      return <Cpu className="w-5 h-5 text-orange-400" />;
+  }
 }
 
 export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }) => {
@@ -124,43 +151,53 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCourses.map((course, index) => (
+          {filteredCourses.map((course) => (
             <article
               key={course.id}
               className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-orange-300 transition-all flex flex-col justify-between overflow-hidden group"
             >
               <div>
-                {/* Course Card Top Image Header */}
-                <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
-                  <OptimizedImage
-                    src={course.image || '/images/industrial-automation.jpg'}
-                    fallbackSrc={course.imageJpg || '/images/industrial-automation.jpg'}
-                    alt={course.imageAlt || course.title}
-                    width={800}
-                    height={450}
-                    loading={index < 3 ? 'eager' : 'lazy'}
-                    fetchPriority={index < 3 ? 'high' : 'auto'}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/25 to-transparent pointer-events-none" />
-
-                  {/* Visual Category Badge and Level Pill */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
-                    <span className="px-2.5 py-1 bg-orange-500 text-white rounded-md text-[10.5px] font-bold tracking-wide uppercase shadow-xs">
-                      {course.categoryLabel}
-                    </span>
-                    <span className="text-[11px] font-bold text-white bg-slate-900/80 backdrop-blur-md px-2 py-0.5 rounded border border-white/20">
-                      {course.level.includes('—') ? course.level.split('—')[0].trim() : course.level}
-                    </span>
+                {/* Course Card Header or Image */}
+                {course.image ? (
+                  <div className="relative h-44 w-full bg-slate-900 overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.imageAlt || course.title}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none" />
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                      <span className="px-2.5 py-1 bg-orange-500 text-white rounded-md text-[10.5px] font-bold tracking-wide uppercase shadow-xs">
+                        {course.categoryLabel}
+                      </span>
+                      <div className="w-8 h-8 rounded-lg bg-slate-900/70 backdrop-blur-xs flex items-center justify-center text-white">
+                        {getCourseCategoryIcon(course.category)}
+                      </div>
+                    </div>
+                    <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] text-slate-200 font-mono">
+                      <span className="text-slate-200">{course.level.includes('—') ? course.level.split('—')[0].trim() : course.level}</span>
+                      <span className="text-orange-400 font-bold drop-shadow-xs">70% Pratique</span>
+                    </div>
                   </div>
+                ) : (
+                  <div className="p-5 bg-gradient-to-br from-[#1a365d] to-slate-900 text-white space-y-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="px-2.5 py-1 bg-orange-500 text-white rounded-md text-[10.5px] font-bold tracking-wide uppercase shadow-xs">
+                        {course.categoryLabel}
+                      </span>
+                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                        {getCourseCategoryIcon(course.category)}
+                      </div>
+                    </div>
 
-                  {/* Practical work visual caption */}
-                  <div className="absolute bottom-2.5 left-3 right-3 pointer-events-none">
-                    <span className="text-[10.5px] text-slate-200 font-medium line-clamp-1 drop-shadow-md bg-slate-950/60 backdrop-blur-xs px-2 py-0.5 rounded">
-                      {course.imageCaption || course.imageAlt}
-                    </span>
+                    <div className="flex items-center justify-between text-[11px] text-slate-300 font-mono pt-1">
+                      <span className="text-slate-300">{course.level.includes('—') ? course.level.split('—')[0].trim() : course.level}</span>
+                      <span className="text-orange-400 font-bold">70% Pratique</span>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="p-6 space-y-3">
                   <h2 className="text-base font-bold text-[#1a365d] leading-snug group-hover:text-orange-600 transition-colors line-clamp-2">

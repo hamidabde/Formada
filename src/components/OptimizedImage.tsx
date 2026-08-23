@@ -34,27 +34,31 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   loading = 'lazy',
   fetchPriority = 'auto',
   className = '',
-  fallbackSrc = '/images/fallback-industrie.jpg',
+  fallbackSrc,
   onError,
   ...rest
 }) => {
   const resolvedSrc = resolveAssetUrl(src) || src;
   const resolvedWebp = webpSrc ? resolveAssetUrl(webpSrc) : undefined;
-  const resolvedFallback = resolveAssetUrl(fallbackSrc) || fallbackSrc;
+  const resolvedFallback = fallbackSrc ? (resolveAssetUrl(fallbackSrc) || fallbackSrc) : undefined;
 
-  const [imgSrc, setImgSrc] = useState<string>(resolvedSrc);
+  const [imgSrc, setImgSrc] = useState<string | undefined>(resolvedSrc);
   const [imgWebp, setImgWebp] = useState<string | undefined>(resolvedWebp);
-  const [hasFallbackFailed, setHasFallbackFailed] = useState(false);
+  const [hasFallbackFailed, setHasFallbackFailed] = useState(!src);
 
   // Sync state when props change
   useEffect(() => {
+    if (!src) {
+      setHasFallbackFailed(true);
+      return;
+    }
     setImgSrc(resolvedSrc);
     setImgWebp(resolvedWebp);
     setHasFallbackFailed(false);
   }, [src, webpSrc]);
 
   const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    if (imgSrc !== resolvedFallback) {
+    if (resolvedFallback && imgSrc !== resolvedFallback) {
       setImgWebp(undefined);
       setImgSrc(resolvedFallback);
     } else {

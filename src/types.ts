@@ -23,11 +23,7 @@ export interface Course {
   categoryLabel: string;
   shortDescription: string;
   image?: string;
-  imageWebp?: string;
-  imageJpg?: string;
   imageAlt?: string;
-  imageCaption?: string;
-  seoFileName?: string;
   objectives: string[];
   program: {
     moduleTitle: string;
