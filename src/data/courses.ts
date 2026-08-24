@@ -63,6 +63,8 @@ export const COURSES_DATA: Course[] = [
     category: 'supervision',
     categoryLabel: 'AUTOMATISME & SUPERVISION',
     shortDescription: 'Conception, configuration et programmation d’interfaces opérateur permettant la visualisation, la commande, le diagnostic et le suivi des équipements automatisés.',
+    image: 'https://i.postimg.cc/bJLW1MpH/Programmation-des-Interfaces-Homme-Machine-(IHM.webp',
+    imageAlt: 'Programmation des Interfaces Homme-Machine (IHM / HMI)',
     objectives: [
       'Concevoir des interfaces tactiles ergonomiques et intuitives pour pupitres opérateurs industriels.',
       'Établir et paramétrer la communication de données entre l’IHM et les automates programmables.',
@@ -115,6 +117,8 @@ export const COURSES_DATA: Course[] = [
     category: 'scada',
     categoryLabel: 'SUPERVISION INDUSTRIELLE',
     shortDescription: 'Formation à la conception, au déploiement et à l’exploitation de systèmes SCADA pour la supervision, l’acquisition des données, les alarmes, les tendances et le pilotage des installations industrielles.',
+    image: 'https://i.postimg.cc/pTk4K7RG/Supervision-Industrielle-SCADA.webp',
+    imageAlt: 'Supervision Industrielle SCADA (WinCC / InTouch / PC Vue)',
     objectives: [
       'Maîtriser l’architecture client/serveur des systèmes de supervision SCADA industriels.',
       'Concevoir des synoptiques de procédé multipages animés en liaison avec des parcs d’automates hétérogènes.',
@@ -167,6 +171,8 @@ export const COURSES_DATA: Course[] = [
     category: 'reseaux',
     categoryLabel: 'RÉSEAUX INDUSTRIELS',
     shortDescription: 'Formation consacrée à la configuration, au diagnostic et à la maintenance des réseaux de communication utilisés pour connecter automates, variateurs, IHM et équipements industriels.',
+    image: 'https://i.postimg.cc/vBXk5jb0/Reseaux-de-Communication-Industriels-(PROFINET-Ethernet.webp',
+    imageAlt: 'Réseaux de Communication Industriels (PROFINET, Ethernet/IP, Modbus TCP...)',
     objectives: [
       'Comprendre le fonctionnement et les spécificités des protocoles Ethernet industriels temps réel.',
       'Configurer et déployer les réseaux PROFINET IO, Ethernet/IP et Modbus TCP / RTU.',
@@ -219,6 +225,8 @@ export const COURSES_DATA: Course[] = [
     category: 'diagnostic',
     categoryLabel: 'DIAGNOSTIC & MAINTENANCE',
     shortDescription: 'Méthodologie pratique pour analyser rapidement les dysfonctionnements des automatismes, identifier l’origine des pannes et réduire les temps d’arrêt des équipements de production.',
+    image: 'https://i.postimg.cc/ZRJXBZtR/Diagnostic-des-Systemes-Automatises-en-Production.webp',
+    imageAlt: 'Diagnostic des Systèmes Automatisés en Production',
     objectives: [
       'Appliquer une méthodologie rigoureuse et structurée de recherche de pannes industrielles.',
       'Distinguer rapidement l’origine d’un défaut : capteur, actionneur, câblage, réseau ou programme PLC.',
@@ -271,6 +279,8 @@ export const COURSES_DATA: Course[] = [
     category: 'variateurs',
     categoryLabel: 'VARIATEURS DE VITESSE',
     shortDescription: 'Formation pratique consacrée au fonctionnement, au paramétrage, à la mise en service, au diagnostic et à la maintenance des variateurs de vitesse industriels.',
+    image: 'https://i.postimg.cc/j5RBwK0H/Formation-Variateurs-de-Vitesse-Industriels-Parametrage-Depannage-Maintenance.webp',
+    imageAlt: 'Formation Variateurs de Vitesse Industriels — Paramétrage, Dépannage & Maintenance',
     objectives: [
       'Comprendre les principes physiques de la variation de fréquence sur moteurs asynchrones et synchrones.',
       'Câbler en toute conformité la partie puissance (filtres, selfs, réseau, moteur) et la partie commande.',
@@ -309,11 +319,11 @@ export const COURSES_DATA: Course[] = [
     prerequisites: 'Notions de base sur les moteurs électriques triphasés et habilitation électrique.',
     duration: 'Selon le niveau des participants et les besoins',
     level: 'Initiation à Avancé — Adaptable',
-    modalities: 'Présentiel sur nos bancs d’essai multi-marques ou sur site client au Maroc.',
-    practicalWork: '80% de manipulations directes sur variateurs réels attelés à des bancs d’essais moteurs et charges freinées.',
-    equipmentAndSoftware: ['Variateurs Siemens Sinamics G120/V20, Schneider Altivar ATV630/ATV320, Danfoss, ABB', 'Logiciels Starter/Startdrive, SoMove, Drive Composer', 'Bancs moteurs avec charge'],
+    modalities: 'Présentiel sur nos bancs d’essai multi-marques ou sur site industriel.',
+    practicalWork: '70% de travaux pratiques : câblage, mise en route guidée, programmation de macros d’application et simulation de défauts.',
+    equipmentAndSoftware: ['Bancs d’essai multi-marques (ABB ACS580/ACS880, Schneider ATV630/ATV320, Danfoss FC302, Siemens Sinamics G120)', 'Moteurs asynchrones avec charges mécaniques réelles', 'Consoles de paramétrage et logiciels PC (Drive Composer, SoMove, Starter/Startdrive)'],
     certification: 'Attestation de fin de formation professionnelle.',
-    price: 'Sur devis (Tarif adapté aux entreprises)',
+    price: 'Sur devis',
     featuredHome: true
   },
 
@@ -324,6 +334,8 @@ export const COURSES_DATA: Course[] = [
     category: 'solaire',
     categoryLabel: 'ÉNERGIE SOLAIRE',
     shortDescription: 'Formation couvrant l’étude, le dimensionnement, l’installation, le câblage, la mise en service et les principes de maintenance des installations photovoltaïques.',
+    image: 'https://i.postimg.cc/MTzgMx2G/Etude-Dimensionnement-et-Installation-des-Systemes-Photovoltaiques.webp',
+    imageAlt: 'Étude, Dimensionnement et Installation des Systèmes Photovoltaïques',
     objectives: [
       'Comprendre le principe de conversion photovoltaïque et les technologies de modules solaires.',
       'Dimensionner une installation solaire raccordée au réseau ou en autoconsommation industrielle.',
@@ -376,6 +388,8 @@ export const COURSES_DATA: Course[] = [
     category: 'electricite',
     categoryLabel: 'ÉLECTRICITÉ INDUSTRIELLE',
     shortDescription: 'Formation pratique sur les installations électriques basse tension, les schémas électriques, les protections, les moteurs, le câblage, les mesures et le diagnostic des circuits industriels.',
+    image: 'https://i.postimg.cc/mDTKzRfc/Formation-Electricite-Industrielle-Installations-Electriques-BT.webp',
+    imageAlt: 'Formation Électricité Industrielle & Installations Électriques BT',
     objectives: [
       'Lire et interpréter couramment des schémas électriques industriels complexes (normes CEI / NF C 15-100).',
       'Comprendre le principe et le dimensionnement des appareillages de coupure, de commande et de protection.',
@@ -428,6 +442,8 @@ export const COURSES_DATA: Course[] = [
     category: 'efficacite',
     categoryLabel: 'EFFICACITÉ ÉNERGÉTIQUE',
     shortDescription: 'Formation permettant de comprendre les principes du management de l’énergie, d’identifier les usages énergétiques significatifs, de définir des indicateurs de performance énergétique et d’appliquer les principes de l’ISO 50001.',
+    image: 'https://i.postimg.cc/FRhwdm5H/Efficacite-Energetique-dans-l-Industrie-ISO-50001.webp',
+    imageAlt: 'Efficacité Énergétique dans l’Industrie & ISO 50001',
     objectives: [
       'Comprendre les exigences et la méthodologie du système de management de l’énergie selon la norme ISO 50001.',
       'Identifier et cartographier les Usages Énergétiques Significatifs (UES) d’un site de production industrielle.',
@@ -480,6 +496,8 @@ export const COURSES_DATA: Course[] = [
     category: 'maintenance',
     categoryLabel: 'MAINTENANCE INDUSTRIELLE',
     shortDescription: 'Formation destinée au développement des compétences en maintenance préventive, corrective et diagnostique des machines et équipements industriels.',
+    image: 'https://i.postimg.cc/G2b68rwy/Formation-en-Maintenance-Industrielle.webp',
+    imageAlt: 'Formation en Maintenance Industrielle',
     objectives: [
       'Maîtriser les différentes stratégies de maintenance : préventive systématique, conditionnelle, prédictive et corrective.',
       'Organiser et planifier les interventions techniques pour maximiser le Taux de Rendement Synthétique (TRS / OEE).',
@@ -532,6 +550,8 @@ export const COURSES_DATA: Course[] = [
     category: 'electronique',
     categoryLabel: 'ÉLECTRONIQUE INDUSTRIELLE',
     shortDescription: 'Formation pratique sur les méthodes de contrôle, de mesure, de diagnostic et d’identification des défauts des cartes électroniques utilisées dans les équipements industriels.',
+    image: 'https://i.postimg.cc/tT98ZyQC/Diagnostic-et-Controle-des-Cartes-Electroniques-Industrielles.webp',
+    imageAlt: 'Diagnostic et Contrôle des Cartes Électroniques Industrielles',
     objectives: [
       'Identifier la fonction et le principe des composants électroniques discrets et CMS (diodes, transistors, MOSFET, IGBT, optocoupleurs).',
       'Tester les composants hors tension et sous tension avec un multimètre, un oscilloscope et des alimentations de laboratoire.',
@@ -584,6 +604,8 @@ export const COURSES_DATA: Course[] = [
     category: 'securite',
     categoryLabel: 'SÉCURITÉ ÉLECTRIQUE',
     shortDescription: 'Formation consacrée aux règles de sécurité, aux risques électriques, aux procédures d’intervention, de consignation et aux bonnes pratiques relatives aux opérations sur ou à proximité des installations électriques.',
+    image: 'https://i.postimg.cc/85TxJDQf/Formation-en-Habilitation-Electrique.webp',
+    imageAlt: 'Formation en Habilitation Électrique',
     objectives: [
       'Identifier les dangers du courant électrique, les effets physiologiques de l’électrisation et les risques d’arc flash.',
       'Maîtriser les zones d’environnement électrique et les distances de sécurité selon la réglementation.',
@@ -615,19 +637,19 @@ export const COURSES_DATA: Course[] = [
           'Les 5 étapes incontournables de la consignation électrique en basse tension',
           'Utilisation du Vérificateur d’Absence de Tension (VAT) avec test avant et après usage',
           'Documents de sécurité : autorisation de travail, certificat de consignation, avis de fin de travail',
-          'Conduite à tenir en cas d’accident corporel électrique ou de départ d’incendie sur armoire électrique'
+          'Conduite à tenir en cas d’accident corporel électrique ou de départ de feu'
         ]
       }
     ],
-    targetAudience: 'Électriciens, techniciens de maintenance, mécaniciens, agents de production et opérateurs intervenant à proximité d’installations électriques.',
-    prerequisites: 'Aucun prérequis pour les non-électriciens ; compétences en électricité requises pour les profils électriciens.',
+    targetAudience: 'Électriciens, agents de maintenance, techniciens d’intervention, chargés d’exploitation et personnel non-électricien opérant à proximité d’installations électriques.',
+    prerequisites: 'Aptitude médicale aux travaux sous ou au voisinage de la tension électrique.',
     duration: 'Selon le niveau des participants et les besoins',
-    level: 'Conformité & Sécurité — Adaptable',
-    modalities: 'Présentiel avec ateliers pratiques et simulations réelles de consignation.',
-    practicalWork: 'Mises en situation pratiques sur armoires pédagogiques : procédures réelles de consignation, utilisation des VAT et port des EPI.',
-    equipmentAndSoftware: ['Armoires électriques pédagogiques de consignation', 'Kits complets de consignation (cadenas, moraillons, étiquettes)', 'EPI diélectriques et vérificateurs d’absence de tension (VAT)'],
-    certification: 'Attestation de fin de formation et avis d’habilitation remis à l’employeur.',
-    price: 'Sur devis (Formules intra-entreprise disponibles)',
+    level: 'Réglementaire & Pratique — Adaptable',
+    modalities: 'Présentiel avec évaluations théoriques et pratiques sur armoires pédagogiques.',
+    practicalWork: 'Exercices pratiques de consignation complète (pose de cadenas, VAT, balisage) et rédaction des formulaires réglementaires.',
+    equipmentAndSoftware: ['Armoires pédagogiques de consignation BT', 'Vérificateurs d’Absence de Tension (VAT) homologués', 'Kits de cadenassage / condamnation et EPI complets (visières, gants 1000V)'],
+    certification: 'Avis après formation et attestation de fin de stage pour délivrance du titre d’habilitation par l’employeur.',
+    price: 'Sur devis',
     featuredHome: false
   },
 
@@ -638,6 +660,8 @@ export const COURSES_DATA: Course[] = [
     category: 'qhse',
     categoryLabel: 'QHSE',
     shortDescription: 'Formation sur les fondamentaux de la qualité, de la santé et sécurité au travail, de la prévention des risques et de la maîtrise des impacts environnementaux en milieu professionnel.',
+    image: 'https://i.postimg.cc/bJq4D8cQ/Formation-en-QHSE-Qualite-Hygiene-Securite-Environnement.webp',
+    imageAlt: 'Formation en QHSE — Qualité, Hygiène, Sécurité & Environnement',
     objectives: [
       'Comprendre les enjeux transversaux d’un système intégré Qualité, Hygiène, Sécurité et Environnement (QHSE).',
       'Identifier et évaluer les risques professionnels au poste de travail (Document Unique / Évaluation des Risques).',
@@ -659,11 +683,11 @@ export const COURSES_DATA: Course[] = [
         topics: [
           'Gestion, tri et traçabilité des déchets industriels banals et dangereux',
           'Prévention des pollutions accidentelles et gestion des produits chimiques (Fiches de Données de Sécurité - FDS)',
-          'Règles d’hygiène industrielle, aération des locaux et protection contre les poussières et solvants'
+          'Règles d’hygiène industrielle, aération, bruit et ambiance de travail'
         ]
       },
       {
-        moduleTitle: 'Module 3 : Démarche Qualité, audits terrain & culture sécurité',
+        moduleTitle: 'Module 3 : Normes ISO & déploiement de la culture sécurité',
         topics: [
           'Sensibilisation aux exigences des référentiels de management (ISO 9001, ISO 45001, ISO 14001)',
           'Méthode d’analyse des accidents du travail et presqu’accidents (Arbre des causes)',
