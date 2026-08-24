@@ -1,39 +1,11 @@
 import React, { useState } from 'react';
 import { Course } from '../types';
 import { COURSES_DATA } from '../data/courses';
-import { Search, Clock, BookOpen, ArrowRight, Layers, SlidersHorizontal, Award, Cpu, Network, Zap, Sun, Wrench, ShieldAlert, Gauge, Activity } from 'lucide-react';
+import { Search, Clock, BookOpen, ArrowRight, Layers, SlidersHorizontal } from 'lucide-react';
 
 interface Props {
   onSelectCourse: (course: Course) => void;
   onRequestCourse: (courseTitle: string) => void;
-}
-
-function getCourseCategoryIcon(category: string) {
-  switch (category) {
-    case 'automatisme':
-    case 'supervision':
-    case 'scada':
-      return <Cpu className="w-5 h-5 text-orange-400" />;
-    case 'reseaux':
-      return <Network className="w-5 h-5 text-cyan-400" />;
-    case 'diagnostic':
-      return <Activity className="w-5 h-5 text-emerald-400" />;
-    case 'variateurs':
-      return <Gauge className="w-5 h-5 text-amber-400" />;
-    case 'electricite':
-    case 'efficacite':
-      return <Zap className="w-5 h-5 text-yellow-400" />;
-    case 'solaire':
-      return <Sun className="w-5 h-5 text-orange-400" />;
-    case 'maintenance':
-    case 'electronique':
-      return <Wrench className="w-5 h-5 text-blue-400" />;
-    case 'securite':
-    case 'qhse':
-      return <ShieldAlert className="w-5 h-5 text-red-400" />;
-    default:
-      return <Cpu className="w-5 h-5 text-orange-400" />;
-  }
 }
 
 export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }) => {
@@ -168,17 +140,13 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none" />
-                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                    <div className="absolute top-3 left-3 flex items-center gap-2">
                       <span className="px-2.5 py-1 bg-orange-500 text-white rounded-md text-[10.5px] font-bold tracking-wide uppercase shadow-xs">
                         {course.categoryLabel}
                       </span>
-                      <div className="w-8 h-8 rounded-lg bg-slate-900/70 backdrop-blur-xs flex items-center justify-center text-white">
-                        {getCourseCategoryIcon(course.category)}
-                      </div>
                     </div>
-                    <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] text-slate-200 font-mono">
+                    <div className="absolute bottom-2.5 left-3 text-[11px] text-slate-200 font-mono">
                       <span className="text-slate-200">{course.level.includes('—') ? course.level.split('—')[0].trim() : course.level}</span>
-                      <span className="text-orange-400 font-bold drop-shadow-xs">70% Pratique</span>
                     </div>
                   </div>
                 ) : (
@@ -187,14 +155,10 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
                       <span className="px-2.5 py-1 bg-orange-500 text-white rounded-md text-[10.5px] font-bold tracking-wide uppercase shadow-xs">
                         {course.categoryLabel}
                       </span>
-                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                        {getCourseCategoryIcon(course.category)}
-                      </div>
                     </div>
 
-                    <div className="flex items-center justify-between text-[11px] text-slate-300 font-mono pt-1">
+                    <div className="text-[11px] text-slate-300 font-mono pt-1">
                       <span className="text-slate-300">{course.level.includes('—') ? course.level.split('—')[0].trim() : course.level}</span>
-                      <span className="text-orange-400 font-bold">70% Pratique</span>
                     </div>
                   </div>
                 )}

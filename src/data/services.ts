@@ -6,6 +6,8 @@ export const TECHNICAL_SERVICES: TechService[] = [
     title: 'Réparation de Cartes Électroniques Industrielles',
     shortDescription: 'Diagnostic et réparation de cartes électroniques industrielles pour variateurs, machines, automatismes et équipements de production au Maroc.',
     fullDescription: 'Diagnostic de précision et réparation au composant de cartes électroniques industrielles, variateurs de vitesse et cartes de commande d’automates pour prolonger la durée de vie de vos équipements.',
+    image: 'https://i.postimg.cc/50fDY1df/Diagnostic-de-precision-et-reparation-au-composant-de-cartes-electroniques-industrielles-variateurs.webp',
+    imageAlt: 'Diagnostic de précision et réparation au composant de cartes électroniques industrielles, variateurs de vitesse et cartes de commande',
     subFeatures: [
       'Réparation de cartes électroniques de variateurs de vitesse (puissance & commande)',
       'Réparation de cartes électroniques industrielles et cartes d’E/S pour automates PLC',
@@ -28,6 +30,8 @@ export const TECHNICAL_SERVICES: TechService[] = [
     title: 'Programmation Automates PLC & Automatisme Industriel',
     shortDescription: 'Programmation, modification, diagnostic et optimisation d\'automates industriels PLC pour machines, procédés et installations industrielles au Maroc.',
     fullDescription: 'Programmation d’automates industriels PLC, rétrofit d’installations obsolètes, création d’IHM et supervision SCADA pour fiabiliser vos lignes de production au Maroc.',
+    image: 'https://i.postimg.cc/1tM2DTsG/Programmation-d-automates-industriels-PLC-retrofit-d-installations-obsoletes-creation-d-IHM-et-sup.webp',
+    imageAlt: 'Programmation d’automates industriels PLC, rétrofit d’installations obsolètes, création d’IHM et supervision',
     subFeatures: [
       'Programmation d’automates PLC (Siemens TIA Portal S7-1200/1500, Schneider Modicon, Rockwell)',
       'Modification, optimisation de cycle et diagnostic de programmes d’automatisme existants',
@@ -51,6 +55,8 @@ export const TECHNICAL_SERVICES: TechService[] = [
     title: 'Maintenance & Réparation Variateurs de Vitesse et Diagnostic sur Site',
     shortDescription: 'Diagnostic, paramétrage, maintenance et réparation de variateurs de vitesse pour moteurs, machines et installations industrielles au Maroc.',
     fullDescription: 'Intervention d’urgence, dépannage industriel et maintenance de variateurs de vitesse pour minimiser les arrêts de production sur l’ensemble du territoire marocain.',
+    image: 'https://i.postimg.cc/Jhg331v9/maintenance-et-reparation-variateurs-de-vitesse-et-diagnostique-sur-site.webp',
+    imageAlt: 'Maintenance & Réparation Variateurs de Vitesse et Diagnostic sur Site',
     subFeatures: [
       'Diagnostic, dépannage et maintenance de variateurs de vitesse multi-marques',
       'Recherche méthodique de pannes électriques, électroniques et d’automatisme sur site',
@@ -73,6 +79,8 @@ export const TECHNICAL_SERVICES: TechService[] = [
     title: 'Maintenance Électrique & Industrielle, Installation et Mise en Service',
     shortDescription: 'Services de maintenance industrielle, diagnostic électrique, dépannage et assistance technique pour machines et équipements industriels au Maroc.',
     fullDescription: 'Maintenance électrique industrielle, intégration de coffrets d’automatisme, raccordement et mise en service d’équipements industriels dans le respect des normes.',
+    image: 'https://i.postimg.cc/gJ4Q35mh/Maintenance-electrique-industrielle-installation-et-mise-en-service.webp',
+    imageAlt: 'Maintenance Électrique & Industrielle, Installation et Mise en Service',
     subFeatures: [
       'Maintenance électrique industrielle préventive et corrective sur armoires de commande',
       'Installation physique, câblage et raccordement de nouvelles armoires d’automatisme',

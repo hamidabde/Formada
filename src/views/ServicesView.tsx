@@ -33,26 +33,48 @@ export const ServicesView: React.FC<Props> = ({ onRequestService }) => {
               className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden transition-all hover:border-orange-300 group"
             >
               {/* Service Header Banner */}
-              <div className="bg-slate-900 text-white p-6 sm:p-8 space-y-4 border-b border-slate-800">
-                <div className="flex items-center justify-between gap-2 flex-wrap">
-                  <span className="px-3 py-1 bg-orange-500 text-white font-extrabold text-[11px] uppercase tracking-wider rounded-md shadow-sm">
+              <div className="relative overflow-hidden min-h-[220px] sm:min-h-[240px] flex flex-col justify-between p-6 sm:p-8 border-b border-slate-200 bg-slate-900">
+                {service.image ? (
+                  <>
+                    <img
+                      src={service.image}
+                      alt={service.imageAlt || service.title}
+                      className="absolute inset-0 w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                    {/* Gradient Overlay for high legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-900/30" />
+                  </>
+                ) : (
+                  <div className="absolute inset-0 bg-slate-900" />
+                )}
+
+                {/* Top Badge */}
+                <div className="relative z-10 flex items-center justify-between gap-2 flex-wrap">
+                  <span className="px-3 py-1.5 bg-orange-500 text-white font-extrabold text-[11px] uppercase tracking-wider rounded-md shadow-md">
                     Pôle Services Techniques au Maroc
                   </span>
-                  <span className="text-xs font-mono text-emerald-400 bg-slate-950/80 px-2.5 py-1 rounded-md border border-emerald-500/30">
+                  <span className="text-xs font-mono text-emerald-400 bg-slate-950/80 px-2.5 py-1 rounded-md border border-emerald-500/30 backdrop-blur-xs">
                     INTERVENTION SUR SITE &amp; ATELIER
                   </span>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-orange-500 text-white flex items-center justify-center font-bold shrink-0 shadow-lg border border-orange-400/40">
-                    {service.id === 'reparation' && <Cpu className="w-7 h-7" />}
-                    {service.id === 'automatisme' && <Bot className="w-7 h-7" />}
-                    {service.id === 'diagnostic' && <Wrench className="w-7 h-7" />}
-                    {service.id === 'installation' && <Settings className="w-7 h-7" />}
+                {/* Bottom Icon + Title + Short Description */}
+                <div className="relative z-10 flex items-center gap-4 mt-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold shrink-0 shadow-lg border border-orange-400/40">
+                    {service.id === 'reparation' && <Cpu className="w-6 h-6 sm:w-7 sm:h-7" />}
+                    {service.id === 'automatisme' && <Bot className="w-6 h-6 sm:w-7 sm:h-7" />}
+                    {service.id === 'diagnostic' && <Wrench className="w-6 h-6 sm:w-7 sm:h-7" />}
+                    {service.id === 'installation' && <Settings className="w-6 h-6 sm:w-7 sm:h-7" />}
                   </div>
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold leading-snug text-white">{service.title}</h2>
-                    <p className="text-xs text-slate-300 mt-1 max-w-2xl">{service.shortDescription}</p>
+                    <h2 className="text-lg sm:text-2xl font-bold leading-snug text-white drop-shadow-sm">
+                      {service.title}
+                    </h2>
+                    <p className="text-xs sm:text-sm text-slate-200 mt-1 max-w-3xl drop-shadow-xs font-normal">
+                      {service.shortDescription}
+                    </p>
                   </div>
                 </div>
               </div>

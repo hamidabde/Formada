@@ -53,6 +53,8 @@ export interface TechService {
   equipmentTypes: string[];
   iconName: string;
   ctaText: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface InterventionProject {

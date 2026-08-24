@@ -102,10 +102,6 @@ export const HomeView: React.FC<Props> = ({
                       <Zap className="w-3.5 h-3.5" />
                       Atelier &amp; Bancs Pratiques
                     </span>
-                    <span className="px-2.5 py-1 bg-slate-900/80 backdrop-blur-md border border-emerald-500/40 text-emerald-400 text-[11px] font-mono font-semibold rounded-lg flex items-center gap-1.5 shadow-xs">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      100% Réel
-                    </span>
                   </div>
 
                   {/* Bottom caption */}
@@ -293,49 +289,40 @@ export const HomeView: React.FC<Props> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-orange-500">Formations Industrielles</span>
+            <span className="text-xs font-extrabold uppercase tracking-wider text-orange-500">
+              FORMATIONS INDUSTRIELLES
+            </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1a365d] tracking-tight mt-1">
               Axes majeurs de nos programmes de formation au Maroc
             </h2>
           </div>
           <Link
             to="/formations"
-            className="text-xs font-bold text-orange-500 hover:text-orange-600 flex items-center gap-1 self-start md:self-auto"
+            className="text-xs sm:text-sm font-bold text-orange-500 hover:text-orange-600 flex items-center gap-1 self-start md:self-auto transition-colors"
           >
             <span>Voir toutes les formations ({COURSES_DATA.length})</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Card 1: Automatisme */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-orange-300 transition-all flex flex-col justify-between overflow-hidden group">
+          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group">
             <div>
-              <div className="relative p-5 bg-gradient-to-br from-[#1a365d] to-slate-900 text-white min-h-[110px] flex flex-col justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 bg-orange-500 text-white rounded text-[10px] font-bold uppercase tracking-wider">
-                    Automatisme
-                  </span>
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-orange-400">
-                    <Bot className="w-4 h-4" />
-                  </div>
-                </div>
-                <div className="text-[11px] text-slate-300 font-medium">Siemens S7-1200/1500 &amp; TIA Portal</div>
+              <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#1a365d] mb-6">
+                <Bot className="w-5 h-5 text-[#1a365d]" />
               </div>
-
-              <div className="p-5 space-y-2">
-                <h3 className="font-bold text-[#1a365d] text-base group-hover:text-orange-600 transition-colors line-clamp-1">
-                  Automatisme industriel
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
-                  Programmation d’automates PLC/API, Siemens TIA Portal, IHM, supervision SCADA et réseaux.
-                </p>
-              </div>
+              <h3 className="text-lg font-bold text-[#1a365d] mb-3">
+                Automatisme industriel
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 font-normal">
+                Formation automatisme : programmation d'automates programmables API/PLC, Siemens TIA Portal, IHM, supervision SCADA et réseaux de terrain.
+              </p>
             </div>
-            <div className="p-4 pt-0">
+            <div>
               <Link
                 to="/formations"
-                className="w-full py-2.5 bg-slate-50 hover:bg-orange-500 hover:text-white text-[#1a365d] text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 border border-slate-100"
+                className="w-full py-2.5 sm:py-3 bg-slate-50 hover:bg-slate-100 text-[#1a365d] text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-2 border border-slate-200/70"
               >
                 <span>Voir la formation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -344,33 +331,22 @@ export const HomeView: React.FC<Props> = ({
           </div>
 
           {/* Card 2: Variateurs */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-orange-300 transition-all flex flex-col justify-between overflow-hidden group">
+          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group">
             <div>
-              <div className="relative p-5 bg-gradient-to-br from-[#1a365d] to-slate-900 text-white min-h-[110px] flex flex-col justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 bg-orange-500 text-white rounded text-[10px] font-bold uppercase tracking-wider">
-                    Variateurs
-                  </span>
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-cyan-400">
-                    <Gauge className="w-4 h-4" />
-                  </div>
-                </div>
-                <div className="text-[11px] text-slate-300 font-medium">Paramétrage &amp; Dépannage Moteur</div>
+              <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#1a365d] mb-6">
+                <Cpu className="w-5 h-5 text-[#1a365d]" />
               </div>
-
-              <div className="p-5 space-y-2">
-                <h3 className="font-bold text-[#1a365d] text-base group-hover:text-orange-600 transition-colors line-clamp-1">
-                  Variateurs de vitesse
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
-                  Fonctionnement, paramétrage, contrôle moteur, diagnostic et maintenance de variateurs.
-                </p>
-              </div>
+              <h3 className="text-lg font-bold text-[#1a365d] mb-3">
+                Variateurs de vitesse
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 font-normal">
+                Formation variateur de vitesse : fonctionnement, paramétrage, commande moteur, diagnostic et maintenance industrielle.
+              </p>
             </div>
-            <div className="p-4 pt-0">
+            <div>
               <Link
                 to="/formations"
-                className="w-full py-2.5 bg-slate-50 hover:bg-orange-500 hover:text-white text-[#1a365d] text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 border border-slate-100"
+                className="w-full py-2.5 sm:py-3 bg-slate-50 hover:bg-slate-100 text-[#1a365d] text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-2 border border-slate-200/70"
               >
                 <span>Voir la formation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -379,33 +355,22 @@ export const HomeView: React.FC<Props> = ({
           </div>
 
           {/* Card 3: Énergie */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-orange-300 transition-all flex flex-col justify-between overflow-hidden group">
+          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group">
             <div>
-              <div className="relative p-5 bg-gradient-to-br from-[#1a365d] to-slate-900 text-white min-h-[110px] flex flex-col justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 bg-orange-500 text-white rounded text-[10px] font-bold uppercase tracking-wider">
-                    Solaire &amp; BT
-                  </span>
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-yellow-400">
-                    <Sun className="w-4 h-4" />
-                  </div>
-                </div>
-                <div className="text-[11px] text-slate-300 font-medium">Dimensionnement &amp; Efficacité ISO 50001</div>
+              <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#1a365d] mb-6">
+                <Zap className="w-5 h-5 text-[#1a365d]" />
               </div>
-
-              <div className="p-5 space-y-2">
-                <h3 className="font-bold text-[#1a365d] text-base group-hover:text-orange-600 transition-colors line-clamp-1">
-                  Électricité &amp; Solaire
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
-                  Électricité industrielle BT, dimensionnement solaire photovoltaïque et efficacité énergétique.
-                </p>
-              </div>
+              <h3 className="text-lg font-bold text-[#1a365d] mb-3">
+                Électricité &amp; Énergie solaire
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 font-normal">
+                Formation électricité industrielle, dimensionnement d'installations photovoltaïques, efficacité énergétique et qualité du réseau.
+              </p>
             </div>
-            <div className="p-4 pt-0">
+            <div>
               <Link
                 to="/formations"
-                className="w-full py-2.5 bg-slate-50 hover:bg-orange-500 hover:text-white text-[#1a365d] text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 border border-slate-100"
+                className="w-full py-2.5 sm:py-3 bg-slate-50 hover:bg-slate-100 text-[#1a365d] text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-2 border border-slate-200/70"
               >
                 <span>Voir la formation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -414,33 +379,22 @@ export const HomeView: React.FC<Props> = ({
           </div>
 
           {/* Card 4: Maintenance */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-orange-300 transition-all flex flex-col justify-between overflow-hidden group">
+          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group">
             <div>
-              <div className="relative p-5 bg-gradient-to-br from-[#1a365d] to-slate-900 text-white min-h-[110px] flex flex-col justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 bg-orange-500 text-white rounded text-[10px] font-bold uppercase tracking-wider">
-                    Maintenance
-                  </span>
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-emerald-400">
-                    <Wrench className="w-4 h-4" />
-                  </div>
-                </div>
-                <div className="text-[11px] text-slate-300 font-medium">Méthodologie de Dépannage &amp; Cartes</div>
+              <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#1a365d] mb-6">
+                <Wrench className="w-5 h-5 text-[#1a365d]" />
               </div>
-
-              <div className="p-5 space-y-2">
-                <h3 className="font-bold text-[#1a365d] text-base group-hover:text-orange-600 transition-colors line-clamp-1">
-                  Maintenance industrielle
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
-                  Diagnostic méthodique de pannes, dépannage, électromécanique et contrôle de cartes.
-                </p>
-              </div>
+              <h3 className="text-lg font-bold text-[#1a365d] mb-3">
+                Maintenance industrielle
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 font-normal">
+                Formation maintenance industrielle : diagnostic méthodique de pannes, schémas électriques et contrôle de cartes électroniques.
+              </p>
             </div>
-            <div className="p-4 pt-0">
+            <div>
               <Link
                 to="/formations"
-                className="w-full py-2.5 bg-slate-50 hover:bg-orange-500 hover:text-white text-[#1a365d] text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 border border-slate-100"
+                className="w-full py-2.5 sm:py-3 bg-slate-50 hover:bg-slate-100 text-[#1a365d] text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-2 border border-slate-200/70"
               >
                 <span>Voir la formation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
