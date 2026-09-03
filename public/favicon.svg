@@ -1,0 +1,23 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' width='128' height='128'>
+  <defs>
+    <linearGradient id='navyBg' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#1a3860'/>
+      <stop offset='100%' stop-color='#0f233d'/>
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle rounded background -->
+  <rect width='128' height='128' rx='32' fill='url(#navyBg)'/>
+
+  <!-- Wrench (White, top-left angled towards top-right) -->
+  <g transform='translate(30, 18) scale(2.3)' fill='none' stroke='#ffffff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'>
+    <path d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z'/>
+  </g>
+
+  <!-- Graduation Cap (Vibrant orange, bottom-right) -->
+  <g transform='translate(48, 50) scale(2.6)' fill='none' stroke='#ff7a00' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'>
+    <path d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/>
+    <path d='M22 10v6'/>
+    <path d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/>
+  </g>
+</svg>

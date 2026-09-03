@@ -22,11 +22,8 @@ export const Footer: React.FC<Props> = ({ companyInfo, onOpenQuoteModal }) => {
             {/* Col 1: About */}
             <div className="space-y-4">
               <Link to="/" className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
-                  <div className="relative flex items-center justify-center">
-                    <GraduationCap className="w-5 h-5 text-white absolute -top-1 -left-1" />
-                    <Wrench className="w-4 h-4 text-slate-900 absolute -bottom-1 -right-1" />
-                  </div>
+                <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md shrink-0 border border-slate-700/50">
+                  <img src="/favicon.svg" alt="Logo INDUSTRIELTECH" className="w-full h-full object-contain" />
                 </div>
                 <span className="font-extrabold text-white text-lg tracking-tight hover:text-orange-400 transition-colors">
                   {companyInfo.name}

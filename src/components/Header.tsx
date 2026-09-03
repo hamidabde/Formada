@@ -76,11 +76,8 @@ export const Header: React.FC<Props> = ({
           aria-label="INDUSTRIELTECH - Automatisme, maintenance et formations industrielles"
           className="flex items-center gap-3 text-left group"
         >
-          <div className="w-10 h-10 rounded-xl bg-[#1a365d] text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:bg-[#152c4d] transition-colors">
-            <div className="relative flex items-center justify-center">
-              <GraduationCap className="w-5 h-5 text-orange-400 absolute -top-1 -left-1" />
-              <Wrench className="w-4 h-4 text-white absolute -bottom-1 -right-1" />
-            </div>
+          <div className="w-10 h-10 rounded-xl overflow-hidden shadow-xs shrink-0 group-hover:scale-105 transition-transform">
+            <img src="/favicon.svg" alt="Logo INDUSTRIELTECH" className="w-full h-full object-contain" />
           </div>
           <div>
             <span className="block font-extrabold text-[#1a365d] text-base sm:text-lg leading-tight tracking-tight group-hover:text-orange-600 transition-colors">
