@@ -1,6 +1,6 @@
 {
   "name": "Remix INDUSTRIELTECH - Solutions \u0026 Formations Industrielles",
-  "description": "Formations techniques en automatisme, variateurs de vitesse et électrotechnique, ainsi que services de maintenance, réparation et automatisation industrielle.",
+  "description": "INDUSTRIELTECH propose au Maroc des formations et services en automatisme industriel, maintenance, variateurs de vitesse, électricité et énergie.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

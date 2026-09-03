@@ -136,7 +136,24 @@ export function updateDocumentMetadata(title: string, description: string, pathn
   }
   ogDesc.content = description;
 
-  // 4. Update or create Canonical link
+  // 4. Update or create Open Graph & Twitter Image
+  let ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement | null;
+  if (!ogImage) {
+    ogImage = document.createElement('meta');
+    ogImage.setAttribute('property', 'og:image');
+    document.head.appendChild(ogImage);
+  }
+  ogImage.content = 'https://industrieltech.com/icon-512.png';
+
+  let twImage = document.querySelector('meta[name="twitter:image"]') as HTMLMetaElement | null;
+  if (!twImage) {
+    twImage = document.createElement('meta');
+    twImage.name = 'twitter:image';
+    document.head.appendChild(twImage);
+  }
+  twImage.content = 'https://industrieltech.com/icon-512.png';
+
+  // 5. Update or create Canonical link
   if (pathname !== undefined) {
     const cleanPath = pathname === '/' ? '' : pathname;
     const canonicalUrl = `https://industrieltech.com${cleanPath}`;
