@@ -6,27 +6,27 @@ export interface SeoMetadata {
 export const PAGE_SEO_DATA: Record<string, SeoMetadata> = {
   '/': {
     title: 'INDUSTRIELTECH | Automatisme, Maintenance & Formation au Maroc',
-    description: 'INDUSTRIELTECH propose des formations et services en automatisme industriel, maintenance, variateurs de vitesse, électricité et énergie au Maroc.',
+    description: 'INDUSTRIELTECH propose au Maroc des formations et services en automatisme industriel, maintenance, variateurs de vitesse, électricité et énergie.',
   },
   '/formations': {
-    title: 'Formations en Automatisme, Maintenance & Énergie | INDUSTRIELTECH',
-    description: 'Formations professionnelles en automatisme, automates PLC, IHM, SCADA, réseaux industriels, variateurs de vitesse, électricité BT et QHSE au Maroc.',
+    title: 'Formations Industrielles au Maroc | Automatisme, Maintenance & Énergie',
+    description: 'Découvrez nos formations professionnelles au Maroc en automatisme, PLC, SCADA, variateurs de vitesse, maintenance, électricité et énergie.',
   },
   '/services': {
-    title: 'Services en Automatisme & Maintenance Industrielle | INDUSTRIELTECH',
-    description: 'Services en automatisme, programmation PLC, maintenance industrielle, variateurs de vitesse et réparation de cartes électroniques au Maroc.',
+    title: "Services d'Automatisme & Maintenance Industrielle au Maroc",
+    description: 'INDUSTRIELTECH propose au Maroc des services en automatisme, programmation PLC, maintenance, variateurs et diagnostic électronique industriel.',
   },
   '/realisations': {
-    title: 'Réalisations en Automatisme & Maintenance | INDUSTRIELTECH',
-    description: 'Découvrez les réalisations INDUSTRIELTECH en automatisme, maintenance industrielle, électricité, variateurs de vitesse et formation technique.',
+    title: 'Réalisations en Automatisme & Maintenance au Maroc | INDUSTRIELTECH',
+    description: 'Découvrez les réalisations INDUSTRIELTECH en automatisme, maintenance, électricité, variateurs de vitesse et solutions industrielles au Maroc.',
   },
   '/a-propos': {
-    title: "À propos d'INDUSTRIELTECH | Expertise Industrielle au Maroc",
-    description: 'Découvrez INDUSTRIELTECH et son expertise en automatisme, maintenance industrielle, électricité, formation technique et énergie au Maroc.',
+    title: 'INDUSTRIELTECH | Expertise en Automatisme & Industrie au Maroc',
+    description: "Découvrez INDUSTRIELTECH, spécialisé au Maroc dans l'automatisme, la maintenance industrielle, la formation technique, l'électricité et l'énergie.",
   },
   '/contact': {
-    title: 'Contact INDUSTRIELTECH | Formation & Services Industriels',
-    description: 'Contactez INDUSTRIELTECH pour vos besoins en formation, automatisme, maintenance industrielle, variateurs de vitesse et assistance technique.',
+    title: 'Contact INDUSTRIELTECH Maroc | Formation & Services Industriels',
+    description: 'Contactez INDUSTRIELTECH au Maroc pour vos besoins en formation, automatisme industriel, maintenance, variateurs et assistance technique.',
   },
 };
 
@@ -34,72 +34,72 @@ export const TOPIC_SEO_DATA: Record<string, SeoMetadata> = {
   // 13 Formations principales
   'automatisme-plc': {
     title: 'Formation Automatisme Industriel & PLC au Maroc | INDUSTRIELTECH',
-    description: 'Formation pratique couvrant les fondamentaux de l’automatisme industriel, la programmation des automates PLC/API, le Grafcet, les capteurs et le diagnostic.',
+    description: 'Formation pratique en automatisme industriel au Maroc : automates PLC/API, Grafcet, programmation, capteurs, actionneurs et diagnostic.',
   },
   'ihm-hmi': {
-    title: 'Formation IHM & Écrans Opérateurs Industriels | INDUSTRIELTECH',
-    description: 'Conception, configuration et programmation d’interfaces opérateur IHM / HMI pour la visualisation, le pilotage et les alarmes d’installations.',
+    title: 'Formation IHM HMI au Maroc | Interfaces Homme-Machine Industrielles',
+    description: "Formation IHM/HMI au Maroc : conception et programmation d'interfaces opérateur pour piloter, visualiser et diagnostiquer les automatismes.",
   },
   'supervision-scada': {
-    title: 'Formation Supervision Industrielle SCADA au Maroc | INDUSTRIELTECH',
-    description: 'Formation à la conception, au déploiement et à l’exploitation de systèmes SCADA (WinCC, InTouch, PcVue) pour la supervision industrielle.',
+    title: 'Formation SCADA au Maroc | WinCC, InTouch & PC Vue',
+    description: 'Formation SCADA au Maroc sur WinCC, InTouch et PC Vue : supervision, alarmes, tendances, acquisition de données et pilotage industriel.',
   },
   'reseaux-industriels': {
-    title: 'Formation Réseaux Industriels PROFINET & Modbus | INDUSTRIELTECH',
-    description: 'Formation à la configuration, au diagnostic et à la maintenance des réseaux industriels PROFINET, Ethernet/IP et Modbus TCP.',
+    title: 'Formation Réseaux Industriels au Maroc | PROFINET & Modbus TCP',
+    description: 'Formation aux réseaux industriels au Maroc : PROFINET, Ethernet/IP, Modbus TCP, configuration, communication et diagnostic des équipements.',
   },
   'diagnostic-automatismes': {
-    title: 'Formation Diagnostic des Systèmes Automatisés | INDUSTRIELTECH',
-    description: 'Méthodologie pratique pour analyser rapidement les dysfonctionnements des automatismes et réduire les temps d’arrêt machine.',
+    title: 'Formation Diagnostic des Systèmes Automatisés au Maroc',
+    description: 'Formation pratique au diagnostic des systèmes automatisés : recherche de pannes, analyse PLC, capteurs, actionneurs et réduction des arrêts.',
   },
   'variateurs-vitesse': {
-    title: 'Formation Variateurs de Vitesse Industriels | INDUSTRIELTECH',
-    description: 'Formation pratique sur les variateurs de vitesse : paramétrage, commande moteur, diagnostic de pannes et maintenance industrielle.',
+    title: 'Formation Variateurs de Vitesse au Maroc | Paramétrage & Maintenance',
+    description: 'Formation variateurs de vitesse au Maroc : fonctionnement, paramétrage, mise en service, diagnostic, dépannage et maintenance des VFD.',
   },
   'photovoltaique-solaire': {
-    title: 'Formation Systèmes Photovoltaïques & Énergie Solaire | INDUSTRIELTECH',
-    description: 'Formation couvrant l’étude, le dimensionnement, l’installation, le câblage et la maintenance des installations photovoltaïques.',
+    title: 'Formation Photovoltaïque au Maroc | Dimensionnement & Installation PV',
+    description: 'Formation photovoltaïque au Maroc : étude, dimensionnement, installation, câblage, mise en service et maintenance des systèmes solaires PV.',
   },
   'electricite-industrielle': {
-    title: 'Formation Électricité Industrielle & Installations BT | INDUSTRIELTECH',
-    description: 'Formation pratique sur les installations électriques basse tension, les schémas électriques, les protections et la maintenance électrique.',
+    title: 'Formation Électricité Industrielle au Maroc | Installations BT',
+    description: 'Formation en électricité industrielle au Maroc : installations BT, protections, moteurs, schémas électriques, câblage et diagnostic.',
   },
   'efficacite-energetique-iso50001': {
-    title: 'Formation Efficacité Énergétique & ISO 50001 | INDUSTRIELTECH',
-    description: 'Comprendre le management de l’énergie, identifier les usages énergétiques significatifs et appliquer les principes de la norme ISO 50001.',
+    title: 'Formation ISO 50001 & Efficacité Énergétique au Maroc',
+    description: "Formation ISO 50001 au Maroc : management de l'énergie, performance énergétique, usages significatifs, indicateurs EnPI et optimisation industrielle.",
   },
   'maintenance-industrielle': {
-    title: 'Formation en Maintenance Industrielle au Maroc | INDUSTRIELTECH',
-    description: 'Développement des compétences en maintenance préventive, corrective et diagnostique des équipements industriels.',
+    title: 'Formation Maintenance Industrielle au Maroc | INDUSTRIELTECH',
+    description: 'Formation pratique en maintenance industrielle au Maroc : maintenance préventive, corrective, diagnostic et dépannage des équipements.',
   },
   'electronique-industrielle': {
-    title: 'Formation Diagnostic des Cartes Électroniques | INDUSTRIELTECH',
-    description: 'Formation pratique sur les méthodes de test, de mesure et de diagnostic des cartes électroniques industrielles au composant.',
+    title: 'Formation Diagnostic Cartes Électroniques Industrielles au Maroc',
+    description: 'Formation au diagnostic des cartes électroniques industrielles : mesures, composants, oscilloscope, identification des défauts et contrôle.',
   },
   'habilitation-electrique': {
-    title: 'Formation en Habilitation Électrique | INDUSTRIELTECH',
-    description: 'Formation aux règles de sécurité, risques électriques, procédures d’intervention et consignation sur installations électriques.',
+    title: 'Formation Habilitation Électrique au Maroc | Sécurité Électrique',
+    description: 'Formation en habilitation et sécurité électrique au Maroc : risques électriques, prévention, consignation et interventions en sécurité.',
   },
   'qhse': {
-    title: 'Formation en QHSE Qualité Sécurité Environnement | INDUSTRIELTECH',
-    description: 'Formation sur les fondamentaux de la qualité, de la santé-sécurité au travail et de la maîtrise des impacts environnementaux.',
+    title: 'Formation QHSE au Maroc | Qualité, Sécurité & Environnement',
+    description: 'Formation QHSE au Maroc : qualité, hygiène, sécurité au travail, prévention des risques professionnels et management environnemental.',
   },
   // Services spécifiques
   'automatisme': {
     title: 'Programmation Automates PLC au Maroc | INDUSTRIELTECH',
-    description: "Programmation, modification, diagnostic et optimisation d'automates industriels PLC pour machines, procédés et installations industrielles.",
-  },
-  'reparation': {
-    title: 'Réparation Cartes Électroniques Industrielles au Maroc',
-    description: 'Diagnostic et réparation de cartes électroniques industrielles pour variateurs, machines, automatismes et équipements de production.',
+    description: "Programmation, modification et diagnostic d'automates PLC au Maroc pour machines, procédés industriels et systèmes d'automatisation.",
   },
   'diagnostic': {
     title: 'Maintenance & Réparation Variateurs de Vitesse au Maroc',
-    description: 'Diagnostic, paramétrage, maintenance et réparation de variateurs de vitesse pour moteurs, machines et installations industrielles.',
+    description: 'Diagnostic, maintenance, paramétrage et dépannage de variateurs de vitesse pour machines et installations industrielles au Maroc.',
+  },
+  'reparation': {
+    title: 'Réparation Cartes Électroniques Industrielles au Maroc',
+    description: 'Diagnostic et réparation de cartes électroniques industrielles au Maroc pour variateurs, machines, automatismes et équipements de production.',
   },
   'installation': {
     title: 'Maintenance Électrique & Industrielle au Maroc | INDUSTRIELTECH',
-    description: 'Services de maintenance industrielle, diagnostic électrique, dépannage et assistance technique pour machines et équipements industriels.',
+    description: 'Services de maintenance industrielle, diagnostic électrique, dépannage et assistance technique pour machines et équipements industriels au Maroc.',
   },
 };
 
