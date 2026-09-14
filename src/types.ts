@@ -1,4 +1,4 @@
-export type PageRoute = '/' | '/formations' | '/services' | '/realisations' | '/a-propos' | '/contact';
+export type PageRoute = '/' | '/formations' | '/services' | '/services/reseaux-infrastructure-it' | '/realisations' | '/a-propos' | '/contact';
 
 export type CategoryId =
   | 'all'
@@ -42,7 +42,7 @@ export interface Course {
   featuredHome?: boolean;
 }
 
-export type ServiceId = 'reparation' | 'automatisme' | 'diagnostic' | 'installation';
+export type ServiceId = 'reparation' | 'automatisme' | 'diagnostic' | 'installation' | 'reseaux-it';
 
 export interface TechService {
   id: ServiceId;
@@ -88,6 +88,7 @@ export type RequestType =
   | 'Diagnostic ou dépannage'
   | 'Programmation d’un automate'
   | 'Mise en service'
+  | 'Réseaux & Infrastructure IT'
   | 'Demande de devis'
   | 'Autre demande';
 

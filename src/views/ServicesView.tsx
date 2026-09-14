@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TECHNICAL_SERVICES } from '../data/services';
 import { TechService } from '../types';
-import { Wrench, Cpu, Bot, Settings, CheckCircle2, ArrowRight, ShieldCheck, Zap, PhoneCall } from 'lucide-react';
+import { Wrench, Cpu, Bot, Settings, Network, CheckCircle2, ArrowRight, ShieldCheck, Zap, PhoneCall, ExternalLink } from 'lucide-react';
 
 interface Props {
   onRequestService: (serviceTitle: string) => void;
@@ -14,13 +15,13 @@ export const ServicesView: React.FC<Props> = ({ onRequestService }) => {
       <div className="bg-[#1a365d] text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 border border-orange-400/30 text-xs font-semibold">
           <Wrench className="w-3.5 h-3.5" />
-          <span>Services en Automatisme &amp; Maintenance Industrielle au Maroc</span>
+          <span>Services Techniques &amp; Infrastructures Industrielles &amp; IT au Maroc</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Services en Automatisme &amp; Maintenance Industrielle
+          Services Techniques, Automatisme &amp; Infrastructure IT
         </h1>
         <p className="text-slate-200 text-sm sm:text-base max-w-3xl leading-relaxed">
-          INDUSTRIELTECH délivre des services industriels de pointe au Maroc : programmation automate PLC, diagnostic et dépannage industriel, maintenance de variateurs de vitesse, réparation de cartes électroniques industrielles et maintenance électrique industrielle.
+          INDUSTRIELTECH délivre des services techniques de pointe au Maroc : programmation automate PLC, diagnostic et dépannage industriel, maintenance de variateurs de vitesse, réparation de cartes électroniques industrielles, maintenance électrique et solutions de réseaux &amp; infrastructure informatique pour entreprises.
         </p>
       </div>
 
@@ -67,6 +68,7 @@ export const ServicesView: React.FC<Props> = ({ onRequestService }) => {
                     {service.id === 'automatisme' && <Bot className="w-6 h-6 sm:w-7 sm:h-7" />}
                     {service.id === 'diagnostic' && <Wrench className="w-6 h-6 sm:w-7 sm:h-7" />}
                     {service.id === 'installation' && <Settings className="w-6 h-6 sm:w-7 sm:h-7" />}
+                    {service.id === 'reseaux-it' && <Network className="w-6 h-6 sm:w-7 sm:h-7" />}
                   </div>
                   <div>
                     <h2 className="text-lg sm:text-2xl font-bold leading-snug text-white drop-shadow-sm">
@@ -114,14 +116,32 @@ export const ServicesView: React.FC<Props> = ({ onRequestService }) => {
                       </ul>
                     </div>
 
-                    <div className="pt-4 border-t border-slate-200">
-                      <button
-                        onClick={() => onRequestService(service.title)}
-                        className="w-full py-3 bg-[#1a365d] hover:bg-[#152c4d] text-white font-bold text-xs rounded-lg shadow-md transition-colors flex items-center justify-center gap-2 active:scale-98"
-                      >
-                        <span>Demander une intervention</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
+                    <div className="pt-4 border-t border-slate-200 space-y-2">
+                      {service.id === 'reseaux-it' ? (
+                        <>
+                          <Link
+                            to="/services/reseaux-infrastructure-it"
+                            className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2 active:scale-98"
+                          >
+                            <span>Découvrir la page dédiée Réseaux IT</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                          <button
+                            onClick={() => onRequestService(service.title)}
+                            className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-[#1a365d] font-bold text-xs rounded-lg transition-colors flex items-center justify-center gap-2"
+                          >
+                            <span>Demander un diagnostic IT</span>
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          onClick={() => onRequestService(service.title)}
+                          className="w-full py-3 bg-[#1a365d] hover:bg-[#152c4d] text-white font-bold text-xs rounded-lg shadow-md transition-colors flex items-center justify-center gap-2 active:scale-98"
+                        >
+                          <span>Demander une intervention</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

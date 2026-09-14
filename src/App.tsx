@@ -15,6 +15,7 @@ import { HomeView } from './views/HomeView';
 // Code splitting: Lazy load secondary views to reduce initial bundle size and speed up FCP/LCP
 const CoursesView = lazy(() => import('./views/CoursesView').then(m => ({ default: m.CoursesView })));
 const ServicesView = lazy(() => import('./views/ServicesView').then(m => ({ default: m.ServicesView })));
+const NetworkServiceDetailView = lazy(() => import('./views/NetworkServiceDetailView').then(m => ({ default: m.NetworkServiceDetailView })));
 const ProjectsView = lazy(() => import('./views/ProjectsView').then(m => ({ default: m.ProjectsView })));
 const AboutView = lazy(() => import('./views/AboutView').then(m => ({ default: m.AboutView })));
 const ContactView = lazy(() => import('./views/ContactView').then(m => ({ default: m.ContactView })));
@@ -151,6 +152,16 @@ function MainLayout() {
                 />
               }
             />
+            <Route
+              path="/services/reseaux-infrastructure-it"
+              element={
+                <NetworkServiceDetailView
+                  companyInfo={companyInfo}
+                  onOpenQuoteModal={handleOpenQuoteModal}
+                />
+              }
+            />
+            <Route path="/services/reseaux-it" element={<Navigate to="/services/reseaux-infrastructure-it" replace />} />
             <Route
               path="/realisations"
               element={

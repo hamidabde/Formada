@@ -98,5 +98,31 @@ export const TECHNICAL_SERVICES: TechService[] = [
     ],
     iconName: 'Settings',
     ctaText: 'Demander une mise en service'
+  },
+  {
+    id: 'reseaux-it',
+    title: 'Réseaux & Infrastructure IT',
+    shortDescription: 'Des solutions professionnelles pour concevoir, installer, sécuriser, maintenir et optimiser votre infrastructure informatique et réseau.',
+    fullDescription: 'Industrieltech accompagne les entreprises dans la mise en place et la gestion de leurs infrastructures réseau et systèmes afin de garantir performance, disponibilité, sécurité et continuité de service. Une offre complémentaire à nos expertises en automatisme et maintenance industrielle.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Installation, brassage et maintenance d’infrastructures réseaux et serveurs informatiques pour entreprises au Maroc',
+    subFeatures: [
+      'Installation de réseaux LAN, configuration Ethernet, switches managés & routeurs',
+      'Déploiement et sécurisation Wi-Fi professionnel & optimisation de la couverture',
+      'Organisation, brassage, étiquetage et identification de baies & équipements réseau',
+      'Administration systèmes Windows & serveurs Linux (utilisateurs, partages, SSH)',
+      'Support informatique & assistance technique réactive pour postes de travail et utilisateurs',
+      'Diagnostic méthodique de connectivité, analyse DNS/DHCP & dépannage réseau',
+      'Sécurisation réseau : segmentation VLAN, filtrage pare-feu & contrôle des accès',
+      'Supervision, sauvegarde des configurations & maintenance préventive de l’infrastructure IT'
+    ],
+    equipmentTypes: [
+      'Switches de niveau 2/3, routeurs d’entreprise & passerelles',
+      'Bornes Wi-Fi professionnelles (Access Points) & contrôleurs',
+      'Baies de brassage, répartiteurs RJ45 & armoires informatiques',
+      'Serveurs Windows / Linux, NAS & postes clients professionnels'
+    ],
+    iconName: 'Network',
+    ctaText: 'Demander un diagnostic'
   }
 ];

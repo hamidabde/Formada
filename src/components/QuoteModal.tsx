@@ -234,6 +234,7 @@ export const QuoteModal: React.FC<Props> = ({
                     <option value="Diagnostic ou dépannage">Diagnostic ou dépannage sur site</option>
                     <option value="Programmation d’un automate">Programmation automate / PLC</option>
                     <option value="Mise en service">Mise en service d'équipement</option>
+                    <option value="Réseaux & Infrastructure IT">Réseaux &amp; Infrastructure IT</option>
                     <option value="Autre demande">Autre demande technique</option>
                   </select>
                 </div>

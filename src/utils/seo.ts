@@ -16,6 +16,10 @@ export const PAGE_SEO_DATA: Record<string, SeoMetadata> = {
     title: "Services d'Automatisme & Maintenance Industrielle au Maroc",
     description: 'INDUSTRIELTECH propose au Maroc des services en automatisme, programmation PLC, maintenance, variateurs et diagnostic électronique industriel.',
   },
+  '/services/reseaux-infrastructure-it': {
+    title: 'Réseaux Informatiques & Infrastructure IT au Maroc | Industrieltech',
+    description: "Industrieltech propose des services d'installation réseau, configuration, Wi-Fi professionnel, administration systèmes, maintenance informatique et support IT pour les entreprises au Maroc.",
+  },
   '/realisations': {
     title: 'Réalisations en Automatisme & Maintenance au Maroc | INDUSTRIELTECH',
     description: 'Découvrez les réalisations INDUSTRIELTECH en automatisme, maintenance, électricité, variateurs de vitesse et solutions industrielles au Maroc.',
@@ -100,6 +104,10 @@ export const TOPIC_SEO_DATA: Record<string, SeoMetadata> = {
   'installation': {
     title: 'Maintenance Électrique & Industrielle au Maroc | INDUSTRIELTECH',
     description: 'Services de maintenance industrielle, diagnostic électrique, dépannage et assistance technique pour machines et équipements industriels au Maroc.',
+  },
+  'reseaux-it': {
+    title: 'Réseaux Informatiques & Infrastructure IT au Maroc | Industrieltech',
+    description: "Industrieltech propose des services d'installation réseau, configuration, Wi-Fi professionnel, administration systèmes, maintenance informatique et support IT pour les entreprises au Maroc.",
   },
 };
 

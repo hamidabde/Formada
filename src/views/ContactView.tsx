@@ -318,6 +318,7 @@ export const ContactView: React.FC<Props> = ({
                       <option value="Diagnostic ou dépannage">Diagnostic ou dépannage</option>
                       <option value="Programmation d’un automate">Programmation d’un automate</option>
                       <option value="Mise en service">Mise en service</option>
+                      <option value="Réseaux & Infrastructure IT">Réseaux &amp; Infrastructure IT</option>
                       <option value="Demande de devis">Demande de devis</option>
                       <option value="Autre demande">Autre demande</option>
                     </select>

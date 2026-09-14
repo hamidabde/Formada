@@ -75,6 +75,14 @@ export const Footer: React.FC<Props> = ({ companyInfo, onOpenQuoteModal }) => {
                 </li>
                 <li>
                   <Link
+                    to="/services/reseaux-infrastructure-it"
+                    className="hover:text-white transition-colors flex items-center gap-1 text-orange-400 font-medium"
+                  >
+                    › Réseaux &amp; Infrastructure IT
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/realisations"
                     className="hover:text-white transition-colors flex items-center gap-1"
                   >
@@ -168,6 +176,12 @@ export const Footer: React.FC<Props> = ({ companyInfo, onOpenQuoteModal }) => {
                 </span>
                 <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
                   mise en service des équipements industriels
+                </span>
+                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-orange-300 rounded">
+                  réseaux &amp; infrastructure IT Maroc
+                </span>
+                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
+                  Wi-Fi professionnel &amp; maintenance IT
                 </span>
               </div>
             </div>

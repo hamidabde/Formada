@@ -404,42 +404,76 @@ export const HomeView: React.FC<Props> = ({
         </div>
       </section>
 
-      {/* 4. SERVICES PRINCIPAUX (4 SERVICES) */}
+      {/* 4. SERVICES PRINCIPAUX (AUTOMATISME, MAINTENANCE & RÉSEAUX IT) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="bg-[#1a365d] text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl">
-          <div className="max-w-2xl mb-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-orange-400">Services Industriels au Maroc</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-white">
-              Prestations techniques en automatisme &amp; maintenance
-            </h2>
-            <p className="text-slate-300 text-sm mt-2">
-              Un soutien réactif pour maintenir, réparer et optimiser vos équipements industriels au Maroc.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div className="max-w-2xl">
+              <span className="text-xs font-bold uppercase tracking-widest text-orange-400">Services Techniques &amp; IT au Maroc</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-white">
+                Prestations techniques en automatisme, maintenance &amp; réseaux IT
+              </h2>
+              <p className="text-slate-300 text-sm mt-2">
+                Un soutien réactif pour maintenir, réparer, sécuriser et optimiser vos équipements industriels et votre infrastructure informatique au Maroc.
+              </p>
+            </div>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-orange-400 hover:text-orange-300 transition-colors shrink-0"
+            >
+              <span>Voir tous nos services</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {TECHNICAL_SERVICES.map((s) => (
-              <div key={s.id} className="p-6 bg-slate-800/80 rounded-2xl border border-slate-700/80 space-y-4 flex flex-col justify-between hover:border-orange-500/40 transition-colors">
+              <div key={s.id} className="p-5 sm:p-6 bg-slate-800/80 rounded-2xl border border-slate-700/80 space-y-4 flex flex-col justify-between hover:border-orange-500/40 transition-colors">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-orange-400 block uppercase tracking-wider">Prestation</span>
+                    <span className="text-[11px] font-bold text-orange-400 block uppercase tracking-wider">
+                      {s.id === 'reseaux-it' ? 'Pôle IT' : 'Prestation'}
+                    </span>
                     <div className="w-8 h-8 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400 flex items-center justify-center font-bold">
                       {s.id === 'reparation' && <Cpu className="w-4 h-4" />}
                       {s.id === 'automatisme' && <Bot className="w-4 h-4" />}
                       {s.id === 'diagnostic' && <Wrench className="w-4 h-4" />}
                       {s.id === 'installation' && <Settings className="w-4 h-4" />}
+                      {s.id === 'reseaux-it' && <Network className="w-4 h-4" />}
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base leading-snug">{s.title}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">{s.shortDescription}</p>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {s.id === 'reseaux-it'
+                      ? 'Installation, configuration, sécurisation et maintenance de réseaux et infrastructures informatiques pour les entreprises.'
+                      : s.shortDescription}
+                  </p>
                 </div>
-                <div className="pt-4 border-t border-slate-700/60">
-                  <button
-                    onClick={() => onOpenQuoteModal('Diagnostic ou dépannage', s.title)}
-                    className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
-                  >
-                    <span>Demander une intervention</span>
-                  </button>
+                <div className="pt-4 border-t border-slate-700/60 space-y-2">
+                  {s.id === 'reseaux-it' ? (
+                    <>
+                      <Link
+                        to="/services/reseaux-infrastructure-it"
+                        className="w-full py-2 bg-slate-700/90 hover:bg-slate-700 text-orange-300 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5"
+                      >
+                        <span>En savoir plus</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                      <button
+                        onClick={() => onOpenQuoteModal('Réseaux & Infrastructure IT', s.title)}
+                        className="w-full py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
+                      >
+                        <span>Demander un diagnostic</span>
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => onOpenQuoteModal('Diagnostic ou dépannage', s.title)}
+                      className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
+                    >
+                      <span>Demander une intervention</span>
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
