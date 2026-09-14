@@ -14,7 +14,8 @@ export type CategoryId =
   | 'maintenance'
   | 'electronique'
   | 'securite'
-  | 'qhse';
+  | 'qhse'
+  | 'ia';
 
 export interface Course {
   id: string;
@@ -22,6 +23,7 @@ export interface Course {
   category: string;
   categoryLabel: string;
   shortDescription: string;
+  detailedDescription?: string;
   image?: string;
   imageAlt?: string;
   objectives: string[];

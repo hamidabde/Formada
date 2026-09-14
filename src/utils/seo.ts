@@ -35,7 +35,7 @@ export const PAGE_SEO_DATA: Record<string, SeoMetadata> = {
 };
 
 export const TOPIC_SEO_DATA: Record<string, SeoMetadata> = {
-  // 13 Formations principales
+  // 14 Formations principales
   'automatisme-plc': {
     title: 'Formation Automatisme Industriel & PLC au Maroc | INDUSTRIELTECH',
     description: 'Formation pratique en automatisme industriel au Maroc : automates PLC/API, Grafcet, programmation, capteurs, actionneurs et diagnostic.',
@@ -87,6 +87,10 @@ export const TOPIC_SEO_DATA: Record<string, SeoMetadata> = {
   'qhse': {
     title: 'Formation QHSE au Maroc | Qualité, Sécurité & Environnement',
     description: 'Formation QHSE au Maroc : qualité, hygiène, sécurité au travail, prévention des risques professionnels et management environnemental.',
+  },
+  'intelligence-artificielle': {
+    title: 'Formation Intelligence Artificielle au Maroc | INDUSTRIELTECH',
+    description: 'Formation pratique en intelligence artificielle au Maroc : IA générative, prompt engineering, automatisation, analyse de données et applications professionnelles.',
   },
   // Services spécifiques
   'automatisme': {

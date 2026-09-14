@@ -183,6 +183,9 @@ export const Footer: React.FC<Props> = ({ companyInfo, onOpenQuoteModal }) => {
                 <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
                   Wi-Fi professionnel &amp; maintenance IT
                 </span>
+                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-orange-300 rounded">
+                  formation intelligence artificielle Maroc
+                </span>
               </div>
             </div>
           </div>

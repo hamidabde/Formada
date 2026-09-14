@@ -89,12 +89,12 @@ export const CourseModal: React.FC<Props> = ({ course, onClose, onRequestCourse 
             </div>
           </div>
 
-          {/* Short Description */}
+          {/* Short / Detailed Description */}
           <div>
             <h4 className="font-bold text-[#1a365d] text-base mb-1.5 flex items-center gap-2">
               <FileText className="w-4 h-4 text-orange-500" /> Présentation de la formation
             </h4>
-            <p className="text-slate-700 leading-relaxed">{course.shortDescription}</p>
+            <p className="text-slate-700 leading-relaxed">{course.detailedDescription || course.shortDescription}</p>
           </div>
 
           {/* Niveau et adaptation pedagogique */}

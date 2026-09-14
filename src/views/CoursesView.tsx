@@ -20,6 +20,7 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
     { id: 'energie', label: 'Électricité & Énergie solaire' },
     { id: 'maintenance', label: 'Maintenance & Électronique' },
     { id: 'securite', label: 'Sécurité & QHSE' },
+    { id: 'ia', label: 'Intelligence Artificielle' },
   ];
 
   const filteredCourses = COURSES_DATA.filter((course) => {
@@ -64,7 +65,7 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
           Catalogue des Formations Industrielles
         </h1>
         <p className="text-slate-200 text-sm sm:text-base max-w-3xl leading-relaxed">
-          Découvrez nos programmes de formation professionnelle continue au Maroc : automatisme industriel, IHM, supervision SCADA, réseaux de communication, diagnostic de production, variateurs de vitesse, énergie solaire photovoltaïque, électricité industrielle BT, efficacité énergétique ISO 50001, maintenance industrielle, cartes électroniques, habilitation électrique et QHSE.
+          Découvrez nos programmes de formation professionnelle continue au Maroc : automatisme industriel, IHM, supervision SCADA, réseaux de communication, diagnostic de production, variateurs de vitesse, énergie solaire photovoltaïque, électricité industrielle BT, efficacité énergétique ISO 50001, maintenance industrielle, cartes électroniques, habilitation électrique, QHSE et intelligence artificielle.
         </p>
       </div>
 
@@ -78,7 +79,7 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Rechercher une formation (ex: PLC, TIA Portal, HMI, SCADA, PROFINET, Variateur, Photovoltaïque, ISO 50001...)"
+              placeholder="Rechercher une formation (ex: PLC, TIA Portal, HMI, SCADA, PROFINET, Variateur, Photovoltaïque, ISO 50001, IA...)"
               className="w-full pl-10 pr-4 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none placeholder:text-slate-400"
             />
           </div>
@@ -107,7 +108,7 @@ export const CoursesView: React.FC<Props> = ({ onSelectCourse, onRequestCourse }
         </div>
       </div>
 
-      {/* Course Grid (13 distinct courses) */}
+      {/* Course Grid (14 distinct courses) */}
       {filteredCourses.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-2xl border border-slate-200 p-8 space-y-3">
           <p className="text-slate-600 font-medium text-base">Aucune formation ne correspond à vos critères de recherche.</p>

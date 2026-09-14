@@ -705,5 +705,128 @@ export const COURSES_DATA: Course[] = [
     certification: 'Attestation de fin de formation professionnelle QHSE.',
     price: 'Sur devis (Tarif groupe entreprise)',
     featuredHome: false
+  },
+
+  // 14 — Formation en Intelligence Artificielle & Applications Professionnelles
+  {
+    id: 'intelligence-artificielle',
+    title: 'Formation en Intelligence Artificielle & Applications Professionnelles',
+    category: 'ia',
+    categoryLabel: 'INTELLIGENCE ARTIFICIELLE',
+    shortDescription: 'Formation pratique permettant de comprendre les fondamentaux de l’intelligence artificielle et d’exploiter les principaux outils d’IA pour automatiser des tâches, analyser des données, générer du contenu et améliorer la productivité professionnelle.',
+    detailedDescription: 'Cette formation permet aux participants de comprendre les principes essentiels de l’intelligence artificielle et d’apprendre à utiliser concrètement les outils d’IA dans leur environnement professionnel. Elle couvre notamment l’IA générative, le prompt engineering, l’automatisation des tâches, l’analyse et l’exploitation des données, la génération de contenu, ainsi que les principales possibilités d’intégration de l’IA dans les activités techniques, administratives et industrielles.',
+    image: '/formation-intelligence-artificielle-applications-professionnelles.webp',
+    imageAlt: 'Formation en intelligence artificielle et applications professionnelles au Maroc',
+    objectives: [
+      'Comprendre les concepts fondamentaux de l’intelligence artificielle.',
+      'Différencier IA, machine learning, deep learning et IA générative.',
+      'Comprendre le fonctionnement général des modèles d’IA générative.',
+      'Apprendre à rédiger des prompts efficaces et structurés.',
+      'Utiliser des outils d’IA pour la rédaction, l’analyse et la synthèse.',
+      'Automatiser certaines tâches professionnelles répétitives.',
+      'Exploiter l’IA pour analyser des données et assister la prise de décision.',
+      'Découvrir les applications de l’IA dans l’industrie et l’ingénierie.',
+      'Comprendre les limites, risques et bonnes pratiques liées à l’utilisation de l’IA.'
+    ],
+    levelsInfo: 'Niveau : Initiation à intermédiaire — le contenu peut être adapté au profil des participants et aux besoins de l’entreprise.',
+    program: [
+      {
+        moduleTitle: 'Module 1 — Introduction à l’Intelligence Artificielle',
+        topics: [
+          'Définition de l’intelligence artificielle et repères d’évolution',
+          'IA faible et essor de l’IA générative',
+          'Principes du Machine Learning et du Deep Learning',
+          'Fonctionnement général des réseaux de neurones',
+          'Principaux domaines d’application en entreprise et ingénierie'
+        ]
+      },
+      {
+        moduleTitle: 'Module 2 — Intelligence Artificielle Générative',
+        topics: [
+          'Principes fondamentaux de l’IA générative et des Large Language Models (LLM)',
+          'Modèles de langage et génération de texte structuré',
+          'Génération d’images et création de supports visuels',
+          'Analyse, synthèse et traitement de documents (PDF, manuels, rapports)',
+          'Assistants intelligents (exemples : ChatGPT, Gemini, Microsoft Copilot et assistants spécialisés)',
+          'Cas d’usage professionnels et intégration dans le travail quotidien'
+        ]
+      },
+      {
+        moduleTitle: 'Module 3 — Prompt Engineering',
+        topics: [
+          'Structure d’un bon prompt : définition du rôle, contexte, objectif et contraintes',
+          'Spécification précise du format de sortie (tableaux, listes, synthèses, synthèses exécutives)',
+          'Méthodologie des prompts itératifs et raffinement des réponses',
+          'Amélioration continue de la qualité et détection des erreurs fréquentes',
+          'Exercices pratiques d’ingénierie de prompts adaptés à des situations professionnelles'
+        ]
+      },
+      {
+        moduleTitle: 'Module 4 — IA pour la Productivité Professionnelle',
+        topics: [
+          'Rédaction assistée de documents professionnels et courriels formels',
+          'Synthèse de rapports volumineux et préparation de comptes rendus',
+          'Analyse de documents techniques et extraction d’informations clés',
+          'Préparation de présentations et synthèses visuelles',
+          'Traitement rapide de flux d’informations et génération d’idées',
+          'Assistance à la recherche documentaire et organisation des tâches'
+        ]
+      },
+      {
+        moduleTitle: 'Module 5 — Analyse de Données avec l’IA',
+        topics: [
+          'Interprétation rapide de tableaux de données et fichiers chiffrés',
+          'Analyse exploratoire et identification de tendances clés',
+          'Génération de graphiques et représentations visuelles',
+          'Résumé analytique et aide à l’interprétation des résultats',
+          'Rôle d’aide à la décision : importance indispensable de la validation critique par un professionnel compétent'
+        ]
+      },
+      {
+        moduleTitle: 'Module 6 — IA appliquée à l’Industrie',
+        topics: [
+          'Introduction aux cas d’usage industriels et retours d’expérience',
+          'Principes de la maintenance prédictive et détection anticipée d’anomalies',
+          'Contrôle qualité et vision industrielle pour la détection de défauts',
+          'Analyse de données de production et aide au diagnostic sur machines',
+          'Optimisation de la consommation énergétique industrielle',
+          'Supervision intelligente et assistance aux équipes de maintenance',
+          'Exploitation et recherche dans la documentation technique constructeur',
+          'Automatisation des tâches répétitives en atelier et bureau technique'
+        ]
+      },
+      {
+        moduleTitle: 'Module 7 — IA, Automatisation et No-Code',
+        topics: [
+          'Introduction à l’automatisation de workflows professionnels (workflow automation)',
+          'Intégration de l’IA dans les processus opérationnels existants',
+          'Automatisation de tâches administratives répétitives',
+          'Extraction automatisée de données depuis documents et formulaires',
+          'Assistants intelligents personnalisés pour des besoins d’équipe',
+          'Découverte des workflows d’automatisation no-code et low-code connectés à l’IA'
+        ]
+      },
+      {
+        moduleTitle: 'Module 8 — Risques, Éthique et Utilisation Responsable',
+        topics: [
+          'Compréhension des hallucinations et limites de fiabilité de l’information générée',
+          'Importance du contrôle qualité et de la validation humaine systématique',
+          'Confidentialité et protection des données sensibles ou confidentielles d’entreprise',
+          'Sensibilisation aux enjeux de propriété intellectuelle',
+          'Gestion des risques de cybersécurité liés à l’usage des outils d’IA',
+          'Bonnes pratiques et charte d’utilisation responsable de l’IA en milieu professionnel'
+        ]
+      }
+    ],
+    targetAudience: 'Ingénieurs, techniciens, responsables maintenance, responsables production, automaticiens, formateurs, responsables énergie, bureaux d’études, fonctions support, managers et professionnels souhaitant intégrer l’IA dans leurs activités.',
+    prerequisites: 'Maîtrise usuelle de l’outil informatique (bureautique, navigation web). Aucun prérequis en programmation requis.',
+    duration: 'Selon le niveau des participants et les besoins',
+    level: 'Initiation à intermédiaire — Adaptable',
+    modalities: 'Présentiel en nos locaux, sur site client au Maroc (intra-entreprise) ou classe virtuelle.',
+    practicalWork: 'Approche pédagogique : théorie ciblée, démonstrations, exercices pratiques et études de cas professionnels.',
+    equipmentAndSoftware: ['Postes informatiques connectés', 'Outils et assistants d’IA générative (ChatGPT, Gemini, Copilot...)', 'Outils bureautiques et jeux de données d’exercices'],
+    certification: 'Attestation de fin de formation et d’évaluation des compétences professionnelles.',
+    price: 'Sur devis (Selon format et nombre de participants)',
+    featuredHome: true
   }
 ];
