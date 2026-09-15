@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CompanyInfo, RequestType, UrgencyLevel, ContactFormData } from '../types';
-import { Phone, Mail, MapPin, Clock, Send, Paperclip, CheckCircle2, ShieldCheck, MessageSquare, ExternalLink } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Paperclip, CheckCircle2, ShieldCheck, MessageSquare, AlertCircle, Loader2, ExternalLink } from 'lucide-react';
 import { buildWhatsAppLink, OFFICIAL_EMAIL, WHATSAPP_NUMBER_FORMATTED, formatWhatsAppNumber } from '../utils/contact';
 import { EmailSelectorModal } from '../components/EmailSelectorModal';
 
@@ -27,9 +27,12 @@ export const ContactView: React.FC<Props> = ({
     dataConsent: false,
   });
 
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState<string | undefined>(undefined);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [transmissionMode, setTransmissionMode] = useState<'email' | 'whatsapp'>('email');
   const [emailModalOpen, setEmailModalOpen] = useState(false);
 
   useEffect(() => {
@@ -44,8 +47,16 @@ export const ContactView: React.FC<Props> = ({
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
-      setFormData((prev) => ({ ...prev, attachedFileName: e.target.files![0].name }));
+      const file = e.target.files[0];
+      if (file.size > 10 * 1024 * 1024) {
+        setSubmitError('Le fichier dépasse la taille maximale autorisée de 10 Mo.');
+        e.target.value = '';
+        return;
+      }
+      setSelectedFile(file);
+      setFileName(file.name);
+      setFormData((prev) => ({ ...prev, attachedFileName: file.name }));
+      setSubmitError(null);
     }
   };
 
@@ -58,15 +69,80 @@ export const ContactView: React.FC<Props> = ({
     setEmailModalOpen(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.dataConsent) return;
 
+    if (transmissionMode === 'whatsapp') {
+      handleSendWhatsApp();
+      return;
+    }
+
+    // Validate required fields
+    if (
+      !formData.fullName.trim() ||
+      !formData.phone.trim() ||
+      !formData.email.trim() ||
+      !formData.description.trim()
+    ) {
+      setSubmitError('Veuillez renseigner tous les champs obligatoires marqués d’un astérisque (*).');
+      return;
+    }
+
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      const data = new FormData();
+      data.append('fullName', formData.fullName.trim());
+      data.append('companyName', (formData.companyName || '').trim());
+      data.append('phone', formData.phone.trim());
+      data.append('email', formData.email.trim());
+      data.append('requestType', formData.requestType);
+      data.append('relatedSubject', formData.relatedSubject || '');
+      data.append('urgency', formData.urgency);
+      data.append('description', formData.description.trim());
+      data.append('transmissionMode', 'Via E-mail');
+      data.append('dataConsent', 'true');
+
+      if (selectedFile) {
+        data.append('attachment', selectedFile);
+      }
+
+      const response = await fetch('/api/devis', {
+        method: 'POST',
+        body: data,
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
+        setIsSubmitted(true);
+        setSubmitError(null);
+        // Reset form fields
+        setFormData({
+          fullName: '',
+          companyName: '',
+          phone: '',
+          email: '',
+          requestType: initialType,
+          relatedSubject: '',
+          description: '',
+          urgency: 'Normal',
+          dataConsent: false,
+        });
+        setSelectedFile(null);
+        setFileName(undefined);
+      } else {
+        const errorMsg = result?.error || 'Une erreur est survenue lors de l’envoi. Veuillez réessayer.';
+        setSubmitError(errorMsg);
+      }
+    } catch (err) {
+      console.error('Submission error in ContactView:', err);
+      setSubmitError('Une erreur est survenue lors de l’envoi. Veuillez réessayer.');
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 600);
+    }
   };
 
   const rawWhatsapp = formatWhatsAppNumber(companyInfo.whatsapp || '+212 723033508');
@@ -200,41 +276,20 @@ export const ContactView: React.FC<Props> = ({
                 <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a365d]">Demande formulée avec succès</h3>
+                <h3 className="text-2xl font-bold text-[#1a365d]">Votre demande a bien été envoyée.</h3>
                 <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                  Merci {formData.fullName}. Votre dossier pour <strong className="text-[#1a365d]">{formData.relatedSubject || formData.requestType}</strong> est prêt.
+                  Merci {formData.fullName}. Notre équipe technique a bien reçu votre demande et vous répondra dans les plus brefs délais (sous 2 à 4 heures).
                 </p>
 
-                {/* Direct links */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl max-w-md mx-auto space-y-3 text-left">
-                  <span className="block text-xs font-bold text-[#1a365d] uppercase tracking-wider text-center">
-                    Envoyer directement via votre canal préféré :
-                  </span>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button
-                      type="button"
-                      onClick={handleSendWhatsApp}
-                      className="py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <MessageSquare className="w-4 h-4" />
-                      <span>WhatsApp ({displayPhone})</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={handleOpenEmailOptions}
-                      className="py-3 px-4 bg-[#1a365d] hover:bg-[#152c4d] text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <Mail className="w-4 h-4" />
-                      <span>E-mail ({displayEmail})</span>
-                    </button>
-                  </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl max-w-md mx-auto text-xs text-slate-600 space-y-1.5 text-left">
+                  <p className="font-semibold text-slate-800">Un récapitulatif a été transmis à nos ingénieurs.</p>
+                  <p>En cas d'urgence critique sur site, vous pouvez également nous joindre directement par téléphone ou WhatsApp.</p>
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => setIsSubmitted(false)}
-                  className="mt-4 px-6 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs rounded-lg"
+                  className="mt-4 px-6 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs rounded-lg transition-colors"
                 >
                   Remplir une autre demande
                 </button>
@@ -378,14 +433,19 @@ export const ContactView: React.FC<Props> = ({
                     <label className="cursor-pointer px-4 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 transition-colors">
                       <Paperclip className="w-4 h-4 text-slate-600" />
                       <span>Choisir un fichier...</span>
-                      <input type="file" onChange={handleFileChange} className="hidden" accept="image/*,.pdf,.doc,.docx" />
+                      <input
+                        type="file"
+                        onChange={handleFileChange}
+                        className="hidden"
+                        accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,image/*,application/pdf"
+                      />
                     </label>
                     {fileName ? (
                       <span className="text-xs text-emerald-700 font-medium truncate max-w-xs">
                         ✓ {fileName}
                       </span>
                     ) : (
-                      <span className="text-xs text-slate-600">Formats : PDF, JPG, PNG, DOC</span>
+                      <span className="text-xs text-slate-600">Formats : PDF, JPG, PNG, DOC (Max 10 Mo)</span>
                     )}
                   </div>
                 </div>
@@ -406,28 +466,50 @@ export const ContactView: React.FC<Props> = ({
                   </label>
                 </div>
 
+                {/* Error notification banner */}
+                {submitError && (
+                  <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 flex items-start gap-2.5">
+                    <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-bold block">Une erreur est survenue lors de l’envoi.</span>
+                      <span>{submitError}</span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Direct Buttons Bar */}
                 <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
                   <span className="block text-xs font-bold text-[#1a365d] uppercase tracking-wider">
-                    Envoyer ma demande directement :
+                    Choix du mode de transmission :
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <button
                       type="button"
-                      onClick={handleSendWhatsApp}
-                      className="py-3 px-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center justify-center gap-2 transition-colors"
+                      onClick={() => {
+                        setTransmissionMode('whatsapp');
+                        handleSendWhatsApp();
+                      }}
+                      className={`py-3 px-3 font-bold text-xs rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all ${
+                        transmissionMode === 'whatsapp'
+                          ? 'bg-emerald-600 text-white ring-2 ring-emerald-500'
+                          : 'bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100'
+                      }`}
                     >
                       <MessageSquare className="w-4 h-4" />
-                      <span>WhatsApp ({displayPhone})</span>
+                      <span>Via WhatsApp</span>
                     </button>
 
                     <button
                       type="button"
-                      onClick={handleOpenEmailOptions}
-                      className="py-3 px-3 bg-[#1a365d] hover:bg-[#152c4d] text-white font-bold text-xs rounded-xl shadow-sm flex items-center justify-center gap-2 transition-colors"
+                      onClick={() => setTransmissionMode('email')}
+                      className={`py-3 px-3 font-bold text-xs rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all ${
+                        transmissionMode === 'email'
+                          ? 'bg-[#1a365d] text-white ring-2 ring-orange-500'
+                          : 'bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200'
+                      }`}
                     >
-                      <Mail className="w-4 h-4" />
-                      <span>E-mail ({displayEmail})</span>
+                      <Mail className="w-4 h-4 text-orange-400" />
+                      <span>Via E-mail</span>
                     </button>
 
                     <button
@@ -435,8 +517,17 @@ export const ContactView: React.FC<Props> = ({
                       disabled={isSubmitting || !formData.dataConsent}
                       className="py-3 px-3 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-sm flex items-center justify-center gap-2 disabled:opacity-50 transition-colors"
                     >
-                      <Send className="w-4 h-4" />
-                      <span>Valider</span>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Envoi en cours...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>Valider</span>
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>
