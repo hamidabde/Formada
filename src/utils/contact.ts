@@ -87,9 +87,18 @@ export function buildOutlookLink(data: Partial<ContactFormData>, targetEmail: st
 }
 
 /**
- * Build pre-filled Mailto link to INFO@INDUSTRIELTECH.COM
+ * Build pre-filled Mailto link to info@industrieltech.com
  */
-export function buildMailtoLink(data: Partial<ContactFormData>, targetEmail: string = OFFICIAL_EMAIL): string {
+export function buildMailtoLink(data: Partial<ContactFormData> = {}, targetEmail: string = OFFICIAL_EMAIL): string {
+  const cleanEmail = (targetEmail || OFFICIAL_EMAIL).toLowerCase();
+  const hasContent = Boolean(
+    data && (data.relatedSubject || data.description || data.fullName || data.companyName || data.phone || data.attachedFileName)
+  );
+
+  if (!hasContent) {
+    return `mailto:${cleanEmail}`;
+  }
+
   const subjectStr = data.relatedSubject
     ? `[Demande INDUSTRIELTECH] ${data.requestType || 'Devis'} - ${data.relatedSubject}`
     : `[Demande INDUSTRIELTECH] ${data.requestType || 'Devis'}`;
@@ -106,5 +115,5 @@ export function buildMailtoLink(data: Partial<ContactFormData>, targetEmail: str
   if (data.description) body += `\nDescription détaillée :\n${data.description}\n`;
   if (data.attachedFileName) body += `\nFichier joint indiqué : ${data.attachedFileName}\n`;
 
-  return `mailto:${targetEmail}?subject=${encodeURIComponent(subjectStr)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${cleanEmail}?subject=${encodeURIComponent(subjectStr)}&body=${encodeURIComponent(body)}`;
 }
