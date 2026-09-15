@@ -87,6 +87,46 @@ export function buildOutlookLink(data: Partial<ContactFormData>, targetEmail: st
 }
 
 /**
+ * Builds the direct mailto link for Quote / Intervention forms
+ * Recipient: info@industrieltech.com
+ * Subject: Demande IndustrielTech — [Type de demande] — [Nom et prénom]
+ * Body: strictly formatted with line breaks
+ */
+export function buildQuoteMailtoLink(data: Partial<ContactFormData>): string {
+  const recipient = 'info@industrieltech.com';
+  const requestType = (data.requestType || 'Demande').trim();
+  const fullName = (data.fullName || '').trim();
+  const company = (data.companyName || '').trim() || 'Non spécifié';
+  const phone = (data.phone || '').trim();
+  const email = (data.email || '').trim();
+  const urgency = (data.urgency || 'Normal').trim();
+  const description = (data.description || '').trim();
+
+  const subject = `Demande IndustrielTech — ${requestType} — ${fullName}`;
+
+  const body = [
+    'Bonjour,',
+    '',
+    'Je souhaite vous envoyer une demande via le site IndustrielTech.',
+    '',
+    `Nom et prénom : ${fullName}`,
+    `Entreprise : ${company}`,
+    `Téléphone : ${phone}`,
+    `E-mail : ${email}`,
+    `Type de demande : ${requestType}`,
+    `Niveau d’urgence : ${urgency}`,
+    `Description : ${description}`,
+    '',
+    "Dans l'attente de votre retour.",
+    '',
+    'Cordialement,',
+    fullName,
+  ].join('\n');
+
+  return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+/**
  * Build pre-filled Mailto link to info@industrieltech.com
  */
 export function buildMailtoLink(data: Partial<ContactFormData> = {}, targetEmail: string = OFFICIAL_EMAIL): string {

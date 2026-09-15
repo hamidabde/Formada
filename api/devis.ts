@@ -1,6 +1,6 @@
 import multer from 'multer';
 import type { Request, Response } from 'express';
-import { handleDevisRoute, getSmtpConfigStatus } from '../server/mailer';
+import { handleDevisRoute, getSmtpConfigStatus, verifySmtpConnection } from '../server/mailer';
 
 // Disable default Vercel body parser to allow multer to parse multipart/form-data with attachments
 export const config = {
@@ -14,9 +14,16 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 },
 });
 
-export default function handler(req: any, res: any) {
+export default async function handler(req: any, res: any) {
   if (req.method === 'GET') {
     const status = getSmtpConfigStatus();
+    const shouldVerify = req.query?.verify === '1' || req.query?.test === '1';
+
+    let verificationResult = null;
+    if (shouldVerify) {
+      verificationResult = await verifySmtpConnection();
+    }
+
     return res.status(200).json({
       service: 'IndustrielTech Devis Mailer (Vercel Serverless Function)',
       smtpHost: status.host,
@@ -24,6 +31,7 @@ export default function handler(req: any, res: any) {
       smtpUser: status.user,
       hasPasswordConfigured: status.hasPass,
       contactRecipient: status.contactEmail,
+      verification: verificationResult,
     });
   }
 

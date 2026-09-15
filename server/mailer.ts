@@ -51,56 +51,211 @@ export function getSmtpConfigStatus(): SmtpConfigStatus {
 }
 
 /**
- * Creates Nodemailer transporter using Hostinger SMTP settings
+ * Classifies a Nodemailer error into a standardized safe error code
  */
-export function createTransporter(): Transporter {
-  const status = getSmtpConfigStatus();
-  const isSecure = status.port === 465;
+export function classifySmtpError(err: any): { errorCode: string; userMessage: string } {
+  const code = err?.code || '';
+  const message = String(err?.message || '');
+  const responseCode = Number(err?.responseCode) || 0;
+  const response = String(err?.response || '');
 
-  return nodemailer.createTransport({
-    host: status.host,
-    port: status.port,
-    secure: isSecure, // true for 465, false for 587/other
+  if (
+    code === 'EAUTH' ||
+    responseCode === 535 ||
+    /auth|invalid login|credentials|username and password not accepted|535/i.test(message) ||
+    /535/i.test(response)
+  ) {
+    return {
+      errorCode: 'SMTP_AUTH_FAILED',
+      userMessage: 'Échec d’authentification SMTP : les identifiants utilisateur ou mot de passe ont été refusés par Hostinger.',
+    };
+  }
+
+  if (code === 'ETIMEDOUT' || /timeout|timed out|greeting timeout/i.test(message)) {
+    return {
+      errorCode: 'SMTP_TIMEOUT',
+      userMessage: 'Délai d’attente dépassé lors de la communication avec le serveur SMTP Hostinger.',
+    };
+  }
+
+  if (
+    code === 'ECONNREFUSED' ||
+    code === 'ESOCKET' ||
+    code === 'ENOTFOUND' ||
+    code === 'EDNS' ||
+    code === 'ECONNRESET' ||
+    code === 'EHOSTUNREACH' ||
+    /connect|network|socket|closed|getaddrinfo/i.test(message)
+  ) {
+    return {
+      errorCode: 'SMTP_CONNECTION_FAILED',
+      userMessage: 'Impossible d’établir la connexion réseau avec le serveur SMTP Hostinger.',
+    };
+  }
+
+  if (responseCode >= 500 && responseCode < 600) {
+    return {
+      errorCode: 'SMTP_REJECTED',
+      userMessage: `L’e-mail a été rejeté par le serveur de messagerie (Code ${responseCode}).`,
+    };
+  }
+
+  return {
+    errorCode: code || 'SMTP_REJECTED',
+    userMessage: 'Une erreur est survenue lors de l’envoi de votre demande via le serveur SMTP.',
+  };
+}
+
+export interface VerifiedTransporterResult {
+  transporter: Transporter;
+  usedConfig: {
+    host: string;
+    port: number;
+    secure: boolean;
+    requireTLS?: boolean;
+  };
+}
+
+/**
+ * Creates and verifies Nodemailer transporter using primary config (port 465, secure: true)
+ * and falls back to port 587 (secure: false, requireTLS: true) if connection to 465 fails.
+ */
+export async function getVerifiedTransporter(): Promise<VerifiedTransporterResult> {
+  const host = process.env.SMTP_HOST || 'smtp.hostinger.com';
+  const port = Number(process.env.SMTP_PORT) || 465;
+  const user = process.env.SMTP_USER || '';
+  const pass = process.env.SMTP_PASS || '';
+
+  // 1. Primary Configuration (port 465, secure: true)
+  const primaryConfig = {
+    host,
+    port,
+    secure: true,
     auth: {
-      user: status.user,
-      pass: process.env.SMTP_PASS || '',
+      user,
+      pass,
     },
-    tls: {
-      rejectUnauthorized: true,
-    },
-    connectionTimeout: 12000,
+    connectionTimeout: 10000,
     greetingTimeout: 10000,
-    socketTimeout: 20000,
-  });
+    socketTimeout: 15000,
+  };
+
+  console.log(`[SMTP Verify] Testing Primary Config (host: ${host}, port: ${port}, secure: true)...`);
+  const primaryTransporter = nodemailer.createTransport(primaryConfig);
+
+  try {
+    await primaryTransporter.verify();
+    console.log(`[SMTP Verify Success] Primary transporter verified successfully on port ${port} (secure: true).`);
+    return {
+      transporter: primaryTransporter,
+      usedConfig: { host, port, secure: true },
+    };
+  } catch (err465: any) {
+    // 1. In the server-side email code, log the real Nodemailer error:
+    console.error('[SMTP Error on Primary Config (Port 465)]:', {
+      code: err465?.code,
+      command: err465?.command,
+      response: err465?.response,
+      responseCode: err465?.responseCode,
+      message: err465?.message,
+    });
+
+    const isConnIssue =
+      err465?.code === 'ETIMEDOUT' ||
+      err465?.code === 'ECONNREFUSED' ||
+      err465?.code === 'ESOCKET' ||
+      err465?.code === 'ENOTFOUND' ||
+      err465?.code === 'ECONNRESET' ||
+      /timeout|connect|socket/i.test(err465?.message || '');
+
+    // 5. If port 465 fails to connect, test fallback configuration: port 587, secure: false, requireTLS: true
+    console.warn(`[SMTP Fallback] Port 465 verify failed. Testing fallback configuration on port 587 (secure: false, requireTLS: true)...`);
+
+    const fallbackConfig = {
+      host,
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user,
+        pass,
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
+    };
+
+    const fallbackTransporter = nodemailer.createTransport(fallbackConfig);
+
+    try {
+      await fallbackTransporter.verify();
+      console.log('[SMTP Fallback Success] Fallback transporter verified successfully on port 587 (secure: false, requireTLS: true).');
+      return {
+        transporter: fallbackTransporter,
+        usedConfig: { host, port: 587, secure: false, requireTLS: true },
+      };
+    } catch (err587: any) {
+      console.error('[SMTP Error on Fallback Config (Port 587)]:', {
+        code: err587?.code,
+        command: err587?.command,
+        response: err587?.response,
+        responseCode: err587?.responseCode,
+        message: err587?.message,
+      });
+
+      // Throw the most relevant error (or fallback error if connection issue)
+      const finalError = isConnIssue ? err587 : err465;
+      throw finalError;
+    }
+  }
 }
 
 /**
  * Tests SMTP connection and logs status
  */
-export async function verifySmtpConnection(): Promise<{ ok: boolean; message: string }> {
-  const status = getSmtpConfigStatus();
-  console.log(`[SMTP Init] Verifying Hostinger SMTP configuration:`);
-  console.log(`  - Host: ${status.host}`);
-  console.log(`  - Port: ${status.port}`);
-  console.log(`  - User: ${status.user}`);
-  console.log(`  - Password provided: ${status.hasPass ? 'YES' : 'NO'}`);
-  console.log(`  - Destination contact email: ${status.contactEmail}`);
+export async function verifySmtpConnection(): Promise<{
+  ok: boolean;
+  message: string;
+  envCheck: Record<string, boolean>;
+  primaryError?: any;
+  fallbackError?: any;
+}> {
+  const envCheck = {
+    SMTP_HOST: Boolean(process.env.SMTP_HOST),
+    SMTP_PORT: Boolean(process.env.SMTP_PORT),
+    SMTP_USER: Boolean(process.env.SMTP_USER),
+    SMTP_PASS: Boolean(process.env.SMTP_PASS && process.env.SMTP_PASS.trim().length > 0),
+    CONTACT_EMAIL: Boolean(process.env.CONTACT_EMAIL),
+  };
 
-  if (!status.hasPass) {
-    const msg = 'SMTP_PASS environment variable is missing. Real email delivery will be paused until configured in Vercel/environment.';
+  console.log('[SMTP Env Check]', envCheck);
+
+  if (!envCheck.SMTP_HOST || !envCheck.SMTP_PORT || !envCheck.SMTP_USER || !envCheck.SMTP_PASS) {
+    const msg = 'Variables d’environnement SMTP manquantes. Veuillez configurer SMTP_HOST, SMTP_PORT, SMTP_USER et SMTP_PASS.';
     console.warn(`[SMTP Warning] ${msg}`);
-    return { ok: false, message: msg };
+    return { ok: false, message: msg, envCheck };
   }
 
   try {
-    const transporter = createTransporter();
-    await transporter.verify();
-    console.log('[SMTP Success] Hostinger SMTP server connection and authentication verified successfully.');
-    return { ok: true, message: 'Connexion SMTP Hostinger validée avec succès.' };
-  } catch (err: unknown) {
-    const errorMsg = err instanceof Error ? err.message : String(err);
-    console.error('[SMTP Error] Hostinger SMTP verification failed:', errorMsg);
-    return { ok: false, message: errorMsg };
+    const { usedConfig } = await getVerifiedTransporter();
+    return {
+      ok: true,
+      message: `Connexion SMTP Hostinger validée avec succès via le port ${usedConfig.port} (secure: ${usedConfig.secure}).`,
+      envCheck,
+    };
+  } catch (err: any) {
+    return {
+      ok: false,
+      message: err?.message || 'Échec de vérification SMTP',
+      envCheck,
+      primaryError: {
+        code: err?.code,
+        command: err?.command,
+        response: err?.response,
+        responseCode: err?.responseCode,
+        message: err?.message,
+      },
+    };
   }
 }
 
@@ -336,8 +491,28 @@ Pour répondre au client, répondez directement à cet e-mail.
 </html>
     `.trim();
 
-    // 5. Send Email via Nodemailer
-    const transporter = createTransporter();
+    // 2. Before sending, log only whether each environment variable exists (no secret values)
+    const envStatus = {
+      SMTP_HOST: Boolean(process.env.SMTP_HOST),
+      SMTP_PORT: Boolean(process.env.SMTP_PORT),
+      SMTP_USER: Boolean(process.env.SMTP_USER),
+      SMTP_PASS: Boolean(process.env.SMTP_PASS && process.env.SMTP_PASS.trim().length > 0),
+      CONTACT_EMAIL: Boolean(process.env.CONTACT_EMAIL),
+    };
+    console.log('[SMTP Env Check]', envStatus);
+
+    if (!envStatus.SMTP_HOST || !envStatus.SMTP_PORT || !envStatus.SMTP_USER || !envStatus.SMTP_PASS) {
+      console.error('[SMTP Config Error] Missing required SMTP environment variables:', envStatus);
+      return res.status(500).json({
+        success: false,
+        error: 'Variables d’environnement SMTP manquantes sur le serveur [MISSING_ENV]',
+        errorCode: 'MISSING_ENV',
+        envStatus,
+      });
+    }
+
+    // 5. Get verified transporter (attempts port 465 first, then falls back to 587 if connection fails)
+    const { transporter, usedConfig } = await getVerifiedTransporter();
 
     const mailOptions: SendMailOptions = {
       from: fromAddress,
@@ -357,19 +532,27 @@ Pour répondre au client, répondez directement à cet e-mail.
         : [],
     };
 
-    console.log(`[SMTP Sending] Attempting to send quote/intervention request from "${email}" to "${toAddress}"...`);
+    console.log(`[SMTP Sending] Sending quote request from "${email}" to "${toAddress}" via port ${usedConfig.port} (secure: ${usedConfig.secure})...`);
     const info = await transporter.sendMail(mailOptions);
-    console.log(`[SMTP Sent] Message delivered successfully! Message ID: ${info.messageId}`);
+    console.log(`[SMTP Sent] Message delivered successfully via Hostinger SMTP! Message ID: ${info.messageId}`);
 
     return res.status(200).json({
       success: true,
       message: 'Votre demande a bien été envoyée.',
       messageId: info.messageId,
+      usedPort: usedConfig.port,
     });
   } catch (err: unknown) {
-    // 6. Log detailed error without revealing passwords
-    const error = err as { code?: string; command?: string; response?: string; responseCode?: number; message?: string };
-    console.error('[SMTP Fatal Error] Failed to send email via Hostinger SMTP:', {
+    // 1. In the server-side email code, log the real Nodemailer error:
+    const error = err as {
+      code?: string;
+      command?: string;
+      response?: string;
+      responseCode?: number;
+      message?: string;
+    };
+
+    console.error('[SMTP Real Error]:', {
       code: error?.code,
       command: error?.command,
       response: error?.response,
@@ -377,18 +560,19 @@ Pour répondre au client, répondez directement à cet e-mail.
       message: error?.message,
     });
 
-    // Helpful error guidance based on common SMTP issues
-    let userFriendlyError = 'Une erreur est survenue lors de l’envoi. Veuillez réessayer.';
-    if (error?.code === 'EAUTH' || error?.responseCode === 535) {
-      console.error('[SMTP Auth Failure] Hostinger rejected SMTP credentials. Please check SMTP_USER and SMTP_PASS in Vercel.');
-    } else if (error?.code === 'ESOCKET' || error?.code === 'ETIMEDOUT') {
-      console.error('[SMTP Network Timeout] Unable to connect to Hostinger SMTP port 465.');
-    }
+    const { errorCode, userMessage } = classifySmtpError(error);
 
     return res.status(500).json({
       success: false,
-      error: userFriendlyError,
-      errorCode: error?.code || 'SMTP_ERROR',
+      error: `${userMessage} [${errorCode}]`,
+      errorCode: errorCode,
+      smtpDetails: {
+        code: error?.code || null,
+        command: error?.command || null,
+        responseCode: error?.responseCode || null,
+        response: error?.response || null,
+        message: error?.message || null,
+      },
     });
   }
 }

@@ -27,8 +27,15 @@ async function startServer() {
   });
 
   // Status & diagnostic endpoint for SMTP configuration (no secrets exposed)
-  app.get('/api/devis', (req, res) => {
+  app.get('/api/devis', async (req, res) => {
     const status = getSmtpConfigStatus();
+    const shouldVerify = req.query?.verify === '1' || req.query?.test === '1';
+
+    let verificationResult = null;
+    if (shouldVerify) {
+      verificationResult = await verifySmtpConnection();
+    }
+
     res.json({
       status: 'ok',
       service: 'IndustrielTech Devis Mailer',
@@ -37,6 +44,7 @@ async function startServer() {
       smtpUser: status.user,
       hasPasswordConfigured: status.hasPass,
       contactRecipient: status.contactEmail,
+      verification: verificationResult,
     });
   });
 
