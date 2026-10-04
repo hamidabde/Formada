@@ -19,6 +19,8 @@ const NetworkServiceDetailView = lazy(() => import('./views/NetworkServiceDetail
 const ProjectsView = lazy(() => import('./views/ProjectsView').then(m => ({ default: m.ProjectsView })));
 const AboutView = lazy(() => import('./views/AboutView').then(m => ({ default: m.AboutView })));
 const ContactView = lazy(() => import('./views/ContactView').then(m => ({ default: m.ContactView })));
+const GuidesHubView = lazy(() => import('./views/GuidesHubView').then(m => ({ default: m.GuidesHubView })));
+const ProgrammaticPageResolver = lazy(() => import('./components/programmatic/ProgrammaticPageResolver').then(m => ({ default: m.ProgrammaticPageResolver })));
 
 /**
  * Lightweight Loading Skeleton for Suspense Route Transitions
@@ -83,9 +85,19 @@ function SeoAndHashMigration({ activeCourse }: { activeCourse: Course | null }) 
     if (activeCourse && TOPIC_SEO_DATA[activeCourse.id]) {
       const topicSeo = TOPIC_SEO_DATA[activeCourse.id];
       updateDocumentMetadata(topicSeo.title, topicSeo.description, location.pathname);
-    } else {
-      const currentSeo = PAGE_SEO_DATA[location.pathname] || PAGE_SEO_DATA['/'];
+    } else if (PAGE_SEO_DATA[location.pathname]) {
+      const currentSeo = PAGE_SEO_DATA[location.pathname];
       updateDocumentMetadata(currentSeo.title, currentSeo.description, location.pathname);
+    } else {
+      // Don't overwrite dynamic programmatic sub-routes metadata (handled by ProgrammaticPageResolver)
+      const isProgrammaticSubRoute = 
+        location.pathname.startsWith('/formations/') || 
+        location.pathname.startsWith('/services/') || 
+        location.pathname.startsWith('/guides/');
+      if (!isProgrammaticSubRoute) {
+        const fallbackSeo = PAGE_SEO_DATA['/'];
+        updateDocumentMetadata(fallbackSeo.title, fallbackSeo.description, location.pathname);
+      }
     }
   }, [location.pathname, activeCourse]);
 
@@ -144,6 +156,16 @@ function MainLayout() {
                 />
               }
             />
+            {/* Dynamic Programmatic Formations */}
+            <Route
+              path="/formations/:slug"
+              element={
+                <ProgrammaticPageResolver
+                  enforcedType="formation"
+                  onOpenQuoteModal={handleOpenQuoteModal}
+                />
+              }
+            />
             <Route
               path="/services"
               element={
@@ -162,6 +184,34 @@ function MainLayout() {
               }
             />
             <Route path="/services/reseaux-it" element={<Navigate to="/services/reseaux-infrastructure-it" replace />} />
+            {/* Dynamic Programmatic Services */}
+            <Route
+              path="/services/:slug"
+              element={
+                <ProgrammaticPageResolver
+                  enforcedType="service"
+                  onOpenQuoteModal={handleOpenQuoteModal}
+                />
+              }
+            />
+            {/* Technical Guides Hub & Dynamic Programmatic Guides */}
+            <Route
+              path="/guides"
+              element={
+                <GuidesHubView
+                  onOpenQuoteModal={handleOpenQuoteModal}
+                />
+              }
+            />
+            <Route
+              path="/guides/:slug"
+              element={
+                <ProgrammaticPageResolver
+                  enforcedType="guide"
+                  onOpenQuoteModal={handleOpenQuoteModal}
+                />
+              }
+            />
             <Route
               path="/realisations"
               element={

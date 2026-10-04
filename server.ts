@@ -4,6 +4,7 @@ import { createServer as createViteServer } from 'vite';
 import multer from 'multer';
 import dotenv from 'dotenv';
 import { handleDevisRoute, verifySmtpConnection, getSmtpConfigStatus } from './server/mailer';
+import { generateSitemapXml } from './src/utils/sitemapGenerator';
 
 dotenv.config();
 
@@ -14,6 +15,12 @@ async function startServer() {
   // Body parsing for JSON and form fields
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  // Dynamic Programmatic Sitemap for Google & search crawlers
+  app.get('/sitemap.xml', (req, res) => {
+    res.header('Content-Type', 'application/xml');
+    res.send(generateSitemapXml());
+  });
 
   // Multer setup with in-memory buffer storage (max 10MB per attachment)
   const upload = multer({

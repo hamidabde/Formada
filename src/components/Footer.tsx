@@ -83,6 +83,14 @@ export const Footer: React.FC<Props> = ({ companyInfo, onOpenQuoteModal }) => {
                 </li>
                 <li>
                   <Link
+                    to="/guides"
+                    className="hover:text-white transition-colors flex items-center gap-1 text-orange-300 font-medium"
+                  >
+                    › Guides Techniques &amp; Diagnostic
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/realisations"
                     className="hover:text-white transition-colors flex items-center gap-1"
                   >
@@ -156,36 +164,78 @@ export const Footer: React.FC<Props> = ({ companyInfo, onOpenQuoteModal }) => {
             <div className="space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white">Domaines d’intervention</h4>
               <div className="flex flex-wrap gap-1.5 text-[11px]">
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
-                  formation en automatisme industriel
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
+                <Link
+                  to="/formations/formation-siemens-tia-portal-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  formation Siemens TIA Portal
+                </Link>
+                <Link
+                  to="/formations/formation-variateurs-de-vitesse-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
                   formation variateur de vitesse
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
-                  programmation automate API/PLC
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
-                  réparation de cartes électroniques industrielles
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
-                  dépannage de machines industrielles
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
-                  maintenance industrielle
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
-                  mise en service des équipements industriels
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-orange-300 rounded">
+                </Link>
+                <Link
+                  to="/formations/formation-automate-siemens-s7-1200-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  formation automate S7-1200
+                </Link>
+                <Link
+                  to="/services/reparation-variateurs-siemens-sinamics-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  réparation Siemens Sinamics
+                </Link>
+                <Link
+                  to="/services/reparation-variateurs-schneider-altivar-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  réparation Schneider Altivar
+                </Link>
+                <Link
+                  to="/services/reparation-cartes-electroniques-industrielles-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  réparation cartes électroniques
+                </Link>
+                <Link
+                  to="/services/diagnostic-automates-siemens-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  diagnostic automate Siemens
+                </Link>
+                <Link
+                  to="/services/sauvegarde-programmes-automates-plc-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  sauvegarde automate PLC
+                </Link>
+                <Link
+                  to="/services/reseaux-infrastructure-it"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-orange-300 hover:text-white hover:border-orange-500 rounded transition-colors"
+                >
                   réseaux &amp; infrastructure IT Maroc
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded">
-                  Wi-Fi professionnel &amp; maintenance IT
-                </span>
-                <span className="px-2 py-1 bg-slate-900 border border-slate-800 text-orange-300 rounded">
-                  formation intelligence artificielle Maroc
-                </span>
+                </Link>
+                <Link
+                  to="/services/installation-wifi-professionnel-entreprise-maroc"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 rounded transition-colors"
+                >
+                  Wi-Fi professionnel Maroc
+                </Link>
+                <Link
+                  to="/guides/variateur-vitesse-en-defaut-diagnostic"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-orange-300 hover:text-white hover:border-orange-500 rounded transition-colors"
+                >
+                  guide : variateur en défaut
+                </Link>
+                <Link
+                  to="/guides/automate-en-stop-informations-intervention"
+                  className="px-2 py-1 bg-slate-900 border border-slate-800 text-orange-300 hover:text-white hover:border-orange-500 rounded transition-colors"
+                >
+                  guide : automate en STOP
+                </Link>
               </div>
             </div>
           </div>

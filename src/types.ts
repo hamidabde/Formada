@@ -1,4 +1,4 @@
-export type PageRoute = '/' | '/formations' | '/services' | '/services/reseaux-infrastructure-it' | '/realisations' | '/a-propos' | '/contact';
+export type PageRoute = '/' | '/formations' | '/services' | '/services/reseaux-infrastructure-it' | '/guides' | '/realisations' | '/a-propos' | '/contact';
 
 export type CategoryId =
   | 'all'

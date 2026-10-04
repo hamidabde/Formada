@@ -20,6 +20,10 @@ export const PAGE_SEO_DATA: Record<string, SeoMetadata> = {
     title: 'Réseaux Informatiques & Infrastructure IT au Maroc | Industrieltech',
     description: "Industrieltech propose des services d'installation réseau, configuration, Wi-Fi professionnel, administration systèmes, maintenance informatique et support IT pour les entreprises au Maroc.",
   },
+  '/guides': {
+    title: 'Guides Techniques & Diagnostic Industriel au Maroc | INDUSTRIELTECH',
+    description: 'Guides pratiques et fiches méthodologiques pour le diagnostic de pannes industrielles, automates PLC, variateurs et réseaux au Maroc.',
+  },
   '/realisations': {
     title: 'Réalisations en Automatisme & Maintenance au Maroc | INDUSTRIELTECH',
     description: 'Découvrez les réalisations INDUSTRIELTECH en automatisme, maintenance, électricité, variateurs de vitesse et solutions industrielles au Maroc.',

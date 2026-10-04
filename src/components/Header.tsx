@@ -26,6 +26,7 @@ export const Header: React.FC<Props> = ({
     { label: 'Accueil', path: '/' },
     { label: 'Formations', path: '/formations' },
     { label: 'Services', path: '/services' },
+    { label: 'Guides', path: '/guides' },
     { label: 'Réalisations', path: '/realisations' },
     { label: 'À propos', path: '/a-propos' },
     { label: 'Contact', path: '/contact' },
