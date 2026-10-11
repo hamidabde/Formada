@@ -8,14 +8,14 @@ export interface StaticRouteConfig {
 }
 
 export const CORE_STATIC_ROUTES: StaticRouteConfig[] = [
-  { path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-09-20' },
-  { path: '/formations', priority: '0.9', changefreq: 'weekly', lastmod: '2026-09-20' },
-  { path: '/services', priority: '0.9', changefreq: 'weekly', lastmod: '2026-09-20' },
-  { path: '/services/reseaux-infrastructure-it', priority: '0.9', changefreq: 'weekly', lastmod: '2026-09-20' },
-  { path: '/guides', priority: '0.8', changefreq: 'weekly', lastmod: '2026-09-20' },
-  { path: '/realisations', priority: '0.8', changefreq: 'monthly', lastmod: '2026-09-20' },
-  { path: '/a-propos', priority: '0.7', changefreq: 'monthly', lastmod: '2026-09-20' },
-  { path: '/contact', priority: '0.8', changefreq: 'monthly', lastmod: '2026-09-20' },
+  { path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-11' },
+  { path: '/formations', priority: '0.9', changefreq: 'weekly', lastmod: '2026-10-11' },
+  { path: '/services', priority: '0.9', changefreq: 'weekly', lastmod: '2026-10-11' },
+  { path: '/services/reseaux-infrastructure-it', priority: '0.9', changefreq: 'weekly', lastmod: '2026-10-11' },
+  { path: '/guides', priority: '0.8', changefreq: 'weekly', lastmod: '2026-10-11' },
+  { path: '/realisations', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-11' },
+  { path: '/a-propos', priority: '0.7', changefreq: 'monthly', lastmod: '2026-10-11' },
+  { path: '/contact', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-11' },
 ];
 
 /**

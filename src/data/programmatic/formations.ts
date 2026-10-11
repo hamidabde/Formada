@@ -320,83 +320,112 @@ export const FORMATION_PAGES: ProgrammaticPage[] = [
     location: { city: 'Casablanca', region: 'Grand Casablanca', isNationalCoverage: true }
   },
 
-  // 4. Formation automate Schneider Modicon au Maroc (Brouillon technique documenté)
+  // 4. Formation automate Schneider Modicon au Maroc
   {
     slug: 'formation-automate-schneider-modicon-maroc',
     type: 'formation',
-    status: 'draft',
-    draftReason: 'En attente de confirmation du calendrier de renouvellement des licences logicielles EcoStruxure Machine Expert vs Unity Pro et de disponibilité des maquettes dédiées M340/M580 en atelier permanent.',
-    missingRequirements: [
-      'Validation de la dotation matérielle définitive (M221 vs M241 vs M340/M580)',
-      'Arbitrage entre les environnements logiciels EcoStruxure Machine Expert - Basic et Control Expert',
-      'Confirmation de la date d’ouverture des inscriptions publiques au Maroc'
-    ],
+    status: 'published',
     primaryKeyword: 'formation automate Schneider Modicon Maroc',
     searchIntent: 'commerciale',
-    title: 'Formation Automate Schneider Modicon au Maroc | INDUSTRIELTECH (En préparation)',
-    description: 'Formation dédiée aux automates programmables Schneider Electric Modicon au Maroc (M221, M241, M258). Programmation, maintenance et diagnostic.',
+    title: 'Formation Automate Schneider Modicon au Maroc | INDUSTRIELTECH',
+    description: 'Formation pratique sur automates Schneider Electric Modicon au Maroc (M221, M241, M258). Programmation EcoStruxure Machine Expert, Ladder, Grafcet et diagnostic.',
     h1: 'Formation Automate Schneider Modicon au Maroc',
-    badgeText: 'Schneider Electric • Modicon • Cursus en préparation',
-    introduction: 'Les gammes Schneider Electric Modicon (M221, M241, M258, M340) constituent un parc historique et moderne majeur dans l’industrie marocaine. Ce cursus spécialisé est en cours de structuration au sein de notre catalogue pour proposer des travaux pratiques ciblés.',
+    badgeText: 'Schneider Electric • Modicon M221 / M241',
+    introduction: 'Les gammes Schneider Electric Modicon (M221, M241, M258, M340) constituent un parc majeur dans l’industrie marocaine (emballage, convoyage, agroalimentaire, chimie). INDUSTRIELTECH propose une formation pratique et opérationnelle axée sur la configuration matérielle, la programmation sous EcoStruxure Machine Expert et le dépannage terrain.',
     heroImage: 'https://i.postimg.cc/9McsRV5D/Formation-Automatisme-Industriel-Automates-Programmables-(API-PLC).webp',
-    heroImageAlt: 'Automate Schneider Electric Modicon en atelier technique',
+    heroImageAlt: 'Automate Schneider Electric Modicon M221 et M241 en formation pratique au Maroc',
     formationData: {
       audience: [
         'Techniciens de maintenance opérant sur des lignes équipées en automates Schneider Electric',
-        'Électriciens et intégrateurs de machines spéciales'
+        'Électriciens et électromécaniciens désirant maîtriser l’environnement EcoStruxure',
+        'Intégrateurs de machines et câbleurs d’armoires d’automatisme'
       ],
       prerequisites: [
-        'Notions élémentaires d’automatisme et schémas électriques'
+        'Notions élémentaires d’automatisme ou schémas électriques industriels',
+        'Pratique courante de l’environnement PC Windows'
       ],
       skillsAquired: [
         'Identifier la structure matérielle des automates Modicon et des modules d’extension TM3/TM4',
-        'Créer un projet sous EcoStruxure Machine Expert (ou Machine Expert - Basic pour M221)',
+        'Créer, configurer et documenter un projet sous EcoStruxure Machine Expert (et Machine Expert - Basic)',
         'Programmer en Ladder et Grafcet selon la norme CEI 61131-3',
-        'Diagnostiquer les pannes de communication Modbus RTU / Modbus TCP'
+        'Traiter les signaux analogiques (mesure 4-20 mA, 0-10 V) et raccorder les capteurs industriels',
+        'Diagnostiquer les pannes de communication Modbus RTU / Modbus TCP et forcer les variables en sécurité'
       ],
       confirmedHardwareAndSoftware: [
-        'Bancs d’essais Schneider Modicon M221 / M241 (en dotation partagée)',
-        'Logiciels EcoStruxure Machine Expert - Basic et SoMachine'
+        'Automates réels Schneider Electric Modicon M221 et M241',
+        'Modules d’entrées/sorties déportées Schneider TM3 et TM4',
+        'Logiciels officiels EcoStruxure Machine Expert et EcoStruxure Machine Expert - Basic',
+        'Platines didactiques avec capteurs, voyants et variateurs Altivar connectés'
       ],
       programModules: [
         {
-          title: 'Module 1 : Gammes Modicon et matériel',
-          topics: ['Présentation des CPU Modicon compactes et modulaires', 'Raccordement des entrées/sorties et protections']
+          title: 'Module 1 : Architecture matérielle Modicon et câblage',
+          durationEstimate: '1 jour',
+          topics: [
+            'Gammes Modicon compactes (M221) et modulaires (M241/M258)',
+            'Raccordement des entrées/sorties TOR et cartes de mesure analogique TM3',
+            'Alimentation 24VDC, protections fusibles et règles de blindage des liaisons séries/Ethernet'
+          ]
         },
         {
-          title: 'Module 2 : Programmation et mise en service',
-          topics: ['Langages Ladder, Grafcet, variables et tables d’animation', 'Mise en service et forçage']
+          title: 'Module 2 : Programmation sous EcoStruxure Machine Expert',
+          durationEstimate: '2 jours',
+          topics: [
+            'Prise en main de l’environnement de développement et déclaration des variables',
+            'Programmation en schémas à contacts (Ladder) et Grafcet séquentiel',
+            'Temporisateurs, compteurs de pièces et blocs de fonctions réutilisables (FB/FC)',
+            'Mise à l’échelle des signaux analogiques et gestion des alarmes de seuil'
+          ]
+        },
+        {
+          title: 'Module 3 : Diagnostic en ligne, communication et dépannage',
+          durationEstimate: '1 jour',
+          topics: [
+            'Connexion en ligne via Ethernet et port USB, transfert (Download) et comparaison',
+            'Visualisation dynamique des variables, tables d’animation et forçage temporaire',
+            'Communication Modbus TCP avec variateurs de vitesse et afficheurs Magelis',
+            'Sauvegarde intégrale (Backup) et restauration de programme sans perte de paramètres'
+          ]
         }
       ],
-      pedagogicalModalities: 'Travaux pratiques sur bancs réels. Formations proposées sur demande spécifique en intra-entreprise.',
-      certificationNote: 'Attestation de formation technique INDUSTRIELTECH.'
+      pedagogicalModalities: 'Formation 70% pratique sur bancs d’essai industriels réels. Disponible en présentiel dans notre centre ou en intra-entreprise sur votre site industriel au Maroc.',
+      certificationNote: 'Attestation de fin de formation professionnelle INDUSTRIELTECH avec bilan des compétences validées.'
     },
     sections: [
       {
-        title: 'Statut du programme Schneider Modicon',
-        content: 'Cette formation est actuellement disponible sur demande spécifique pour les groupes intra-entreprises disposant d’un parc Modicon. Les sessions inter-entreprises régulières seront ouvertes dès finalisation des bancs permanents M340/M580.'
+        title: 'Un standard industriel incontournable au Maroc',
+        content: 'Présente dans la quasi-totalité des zones industrielles du Royaume (Casablanca, Tanger, Kénitra, Fès, Agadir), la gamme Schneider Modicon pilote des machines de process et d’emballage exigeantes. Savoir intervenir rapidement sur ces automates réduit drastiquement les temps d’arrêt de production.'
+      },
+      {
+        title: 'Travaux pratiques sur bancs réels',
+        content: 'Chaque participant manipule des automates physiques Modicon M221 et M241 reliés à des parties opératives simulées pour acquérir de vrais réflexes de terrain.'
       }
     ],
     faq: [
       {
-        question: 'Peut-on déjà réserver une formation intra-entreprise sur automates Schneider ?',
-        answer: 'Oui, nos ingénieurs peuvent concevoir un programme sur mesure directement adapté à vos automates Modicon sur votre site au Maroc.'
+        question: 'Quelle est la différence entre Machine Expert et Machine Expert Basic ?',
+        answer: 'EcoStruxure Machine Expert - Basic est dédié aux automates compacts Modicon M221 avec une prise en main très intuitive. Machine Expert (complet, basé sur CoDeSys) prend en charge les contrôleurs plus puissants M241, M258 et les axes synchronisés.'
+      },
+      {
+        question: 'La formation peut-elle être organisée dans nos locaux d’usine ?',
+        answer: 'Oui, nous nous déplaçons avec nos bancs d’essai mobiles dans toutes les régions du Maroc pour des sessions intra-entreprises personnalisées.'
       }
     ],
     relatedSlugs: [
       'programmation-automates-schneider-maroc',
       'formation-siemens-tia-portal-maroc',
-      'sauvegarde-programmes-automates-plc-maroc'
+      'sauvegarde-programmes-automates-plc-maroc',
+      'reparation-variateurs-schneider-altivar-maroc'
     ],
     cta: {
-      label: 'Demander une session Schneider sur mesure',
-      subtext: 'Programme adapté à votre parc Modicon existant',
-      actionType: 'quote',
-      prefilledSubject: 'Demande formation sur mesure Schneider Modicon Maroc',
+      label: 'Recevoir le programme Schneider Modicon',
+      subtext: 'Bancs d’essais réels à Casablanca et en intra au Maroc',
+      actionType: 'training',
+      prefilledSubject: 'Demande de programme formation automate Schneider Modicon Maroc',
       prefilledType: 'Formation'
     },
-    sourcesOrBusinessInfo: 'Offre en cours de consolidation technique. Contacter notre équipe pour étude de faisabilité.',
-    updatedAt: '2026-09-20',
+    sourcesOrBusinessInfo: 'Bancs d’essai Schneider Modicon confirmés INDUSTRIELTECH Casablanca. Documentation Schneider Electric EcoStruxure Machine Expert.',
+    updatedAt: '2026-10-11',
     location: { city: 'Casablanca', region: 'Grand Casablanca', isNationalCoverage: true }
   },
 
